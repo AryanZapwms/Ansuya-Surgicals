@@ -139,7 +139,7 @@ function Header() {
             <a href={siteConfig.phoneLink} className="topbar__item">
               <FiPhone aria-hidden="true" /> {siteConfig.phone}
             </a>
-            <a href={`mailto:${siteConfig.email}`} className="topbar__item">
+            <a href={siteConfig.emailLink} className="topbar__item">
               <FiMail aria-hidden="true" /> {siteConfig.email}
             </a>
             <span className="topbar__item">
@@ -302,7 +302,7 @@ function Header() {
               <a href={siteConfig.phoneLink}>
                 <FiPhone aria-hidden="true" /> {siteConfig.phone}
               </a>
-              <a href={`mailto:${siteConfig.email}`}>
+              <a href={siteConfig.emailLink}>
                 <FiMail aria-hidden="true" /> {siteConfig.email}
               </a>
               <Link to="/contact" className="btn btn--primary">

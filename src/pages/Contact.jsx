@@ -18,7 +18,7 @@ const contactCards = [
     icon: <FiMail />,
     title: "Email",
     value: siteConfig.email,
-    link: `mailto:${siteConfig.email}`,
+    link: siteConfig.emailLink,
   },
   {
     icon: <FiMapPin />,
