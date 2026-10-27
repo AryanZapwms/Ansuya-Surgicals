@@ -72,7 +72,7 @@
   color: var(--primary);
 }
 
-/* ---------- Form section ---------- */
+/* ---------- Get in touch section ---------- */
 .contact-main__grid {
   display: grid;
   gap: 48px;
@@ -148,122 +148,29 @@
   color: var(--navy);
 }
 
-/* ---------- Form ---------- */
-.contact-form {
-  padding: 32px 24px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-}
-
-@media (min-width: 768px) {
-  .contact-form {
-    padding: 44px 40px;
-  }
-}
-
-.contact-form__row {
+/* ---------- Call / WhatsApp actions ---------- */
+.contact-actions {
   display: grid;
-  gap: 0 20px;
+  gap: 16px;
 }
 
-@media (min-width: 640px) {
-  .contact-form__row {
-    grid-template-columns: 1fr 1fr;
-  }
+.contact-whatsapp {
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
 }
 
-.form-field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+.contact-whatsapp:hover {
+  background: #1ebe5a;
+  transform: translateY(-2px);
 }
 
-.form-field label {
-  margin-bottom: 8px;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.88rem;
-  color: var(--navy);
+.contact-whatsapp svg {
+  font-size: 1.3rem;
 }
 
-.form-field label span {
-  color: #d23b3b;
-}
-
-.form-field input,
-.form-field textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1.5px solid var(--border);
-  background: var(--bg-softer);
-  color: var(--text);
-  font-size: 0.95rem;
-  transition:
-    border-color var(--transition),
-    box-shadow var(--transition),
-    background var(--transition);
-}
-
-.form-field textarea {
-  resize: vertical;
-  min-height: 140px;
-}
-
-.form-field input::placeholder,
-.form-field textarea::placeholder {
-  color: var(--text-light);
-}
-
-.form-field input:focus,
-.form-field textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(16, 52, 166, 0.1);
-}
-
-.form-field .has-error {
-  border-color: #d23b3b;
-  background: #fff8f8;
-}
-
-.form-field__error {
-  margin-top: 6px;
-  color: #d23b3b;
-  font-size: 0.8rem;
-}
-
-.contact-form__submit {
-  width: 100%;
-  margin-top: 4px;
-}
-
-@media (min-width: 640px) {
-  .contact-form__submit {
-    width: auto;
-  }
-}
-
-.contact-form__success {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 24px;
-  padding: 14px 18px;
-  border-radius: 10px;
-  background: #e9f8f1;
-  border: 1px solid #b6e6cf;
-  color: #0c7a50;
-  font-weight: 500;
-  font-size: 0.92rem;
-}
-
-.contact-form__success svg {
-  flex-shrink: 0;
-  font-size: 1.2rem;
+.contact-whatsapp:hover svg {
+  transform: none;
 }
 
 /* ---------- Map ---------- */

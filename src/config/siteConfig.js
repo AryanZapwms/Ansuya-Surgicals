@@ -58,4 +58,10 @@ const siteConfig = {
   copyrightYear: 2026,
 };
 
+/* Builds a WhatsApp chat link, optionally with a pre-filled message */
+export function getWhatsAppUrl(message) {
+  const url = `https://wa.me/${siteConfig.whatsappNumber}`;
+  return message ? `${url}?text=${encodeURIComponent(message)}` : url;
+}
+
 export default siteConfig;
