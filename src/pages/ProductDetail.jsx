@@ -185,8 +185,6 @@ function ProductDetail() {
             </div>
 
             <ul className="product-detail__assurance">
-              <li><FiCheck aria-hidden="true" /> Available in multiple sizes</li>
-              <li><FiCheck aria-hidden="true" /> Sterile & non-sterile options</li>
               <li><FiCheck aria-hidden="true" /> Bulk / institutional pricing on request</li>
             </ul>
           </Reveal>

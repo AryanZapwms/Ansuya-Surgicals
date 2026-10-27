@@ -42,7 +42,7 @@ function Products() {
 
       <CTASection
         title="Can't Find the Product You Need?"
-        text="Our team can help with product specifications, custom sizes and bulk requirements. Contact us and we will get back to you."
+        text="Our team can help with product specifications and bulk requirements. Contact us and we will get back to you."
         buttonLabel="Contact Us"
       />
     </>

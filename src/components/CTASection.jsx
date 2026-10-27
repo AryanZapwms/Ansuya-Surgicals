@@ -13,7 +13,7 @@ import "./CTASection.css";
 
 function CTASection({
   title = "Looking for Reliable Medical Dressing Solutions?",
-  text = "Talk to our team for product information, bulk supply enquiries and partnership opportunities. We usually respond within one business day.",
+  text = "Talk to our team for product information, bulk supply enquiries and partnership opportunities.",
   buttonLabel = "Contact Us",
   buttonLink = "/contact",
 }) {
