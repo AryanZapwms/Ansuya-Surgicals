@@ -124,7 +124,7 @@ function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <p>
-            © {siteConfig.copyrightYear} {siteConfig.companyName}. All Rights Reserved.
+            © {siteConfig.copyrightYear} {siteConfig.companyName} All Rights Reserved.
           </p>
           <div className="footer__bottom-links">
             <Link to="/about">About Us</Link>
