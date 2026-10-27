@@ -26,6 +26,8 @@ function Home() {
 
   return (
     <>
+      <title>{`${siteConfig.companyName} | Medical & Surgical Dressings`}</title>
+
       {/* ===== SECTION 1 — COMPACT HERO ===== */}
       <section className="home-hero">
         <div className="home-hero__pattern" aria-hidden="true" />

@@ -27,6 +27,8 @@ const range = categories.map((category) => ({
 function About() {
   return (
     <>
+      <title>{`About Us | ${siteConfig.companyName}`}</title>
+
       <PageHero
         title="About Us"
         subtitle="Manufacturer of medical and surgical dressings."

@@ -5,6 +5,7 @@ import CTASection from "../components/CTASection";
 import products from "../data/products";
 import categories from "../data/categories";
 import images from "../data/images";
+import siteConfig from "../config/siteConfig";
 import "./Products.css";
 
 function Products() {
@@ -19,6 +20,8 @@ function Products() {
 
   return (
     <>
+      <title>{`Products | ${siteConfig.companyName}`}</title>
+
       <PageHero
         title="All Products"
         subtitle="Browse our complete range of medical and surgical dressing products. Use the filters to find exactly what you need."
@@ -39,8 +42,8 @@ function Products() {
 
       <CTASection
         title="Can't Find the Product You Need?"
-        text="Our team can help with product specifications, custom sizes and bulk requirements. Send us an enquiry and we will get back to you."
-        buttonLabel="Send an Enquiry"
+        text="Our team can help with product specifications, custom sizes and bulk requirements. Contact us and we will get back to you."
+        buttonLabel="Contact Us"
       />
     </>
   );

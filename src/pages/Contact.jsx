@@ -46,6 +46,8 @@ const contactCards = [
 function Contact() {
   return (
     <>
+      <title>{`Contact Us | ${siteConfig.companyName}`}</title>
+
       <PageHero
         title="Contact Us"
         subtitle="Have a question about our products or need a quote? Our team is here to help."

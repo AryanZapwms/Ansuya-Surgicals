@@ -72,6 +72,8 @@ function ProductDetail() {
 
   return (
     <>
+      <title>{`${product.name} | ${siteConfig.companyName}`}</title>
+
       {/* ===== HERO / BREADCRUMB ===== */}
       <section className="page-hero product-detail-hero">
         {category && (
@@ -237,9 +239,9 @@ function ProductDetail() {
 
       <CTASection
         title={`Interested in ${product.name}?`}
-        text="Send us an enquiry with your quantity and specification requirements and our team will get back to you shortly."
-        buttonLabel="Send an Enquiry"
-        buttonLink="/contact"
+        text="Send us your quantity and specification requirements on WhatsApp and our team will get back to you shortly."
+        buttonLabel="Enquire on WhatsApp"
+        buttonLink={getProductEnquiryUrl(product.name)}
       />
     </>
   );

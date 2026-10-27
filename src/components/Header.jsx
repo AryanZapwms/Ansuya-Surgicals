@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { FiPhone, FiMail, FiMenu, FiX, FiArrowRight } from "react-icons/fi";
 import Logo from "./Logo";
-import siteConfig from "../config/siteConfig";
+import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
 import "./Header.css";
 
 /* =========================================================
    HEADER
    - Laptop / desktop (1024px and wider):
-       Blue top bar: phone + email + enquiry link
+       Blue top bar: phone + email + WhatsApp link
        Main bar:     logo on the left, menu on the right (sticky)
    - Mobile / tablet (below 1024px):
        Logo + hamburger button → slide-in menu from the right
@@ -80,9 +80,14 @@ function Header() {
               <FiMail aria-hidden="true" /> {siteConfig.email}
             </a>
           </div>
-          <Link to="/contact" className="topbar__cta">
-            Send an Enquiry <FiArrowRight aria-hidden="true" />
-          </Link>
+          <a
+            href={getWhatsAppUrl()}
+            className="topbar__cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chat on WhatsApp <FiArrowRight aria-hidden="true" />
+          </a>
         </div>
       </div>
 
@@ -134,9 +139,14 @@ function Header() {
               <a href={siteConfig.emailLink}>
                 <FiMail aria-hidden="true" /> {siteConfig.email}
               </a>
-              <Link to="/contact" className="btn btn--primary">
-                Send an Enquiry
-              </Link>
+              <a
+                href={getWhatsAppUrl()}
+                className="btn btn--primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat on WhatsApp
+              </a>
             </div>
           </nav>
 
