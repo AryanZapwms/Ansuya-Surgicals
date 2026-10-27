@@ -2,22 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
 import SectionHeading from "../components/SectionHeading";
-import SmartImage from "../components/SmartImage";
 import ProductListing from "../components/ProductListing";
 import CTASection from "../components/CTASection";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
-import brands from "../data/brands";
 import products from "../data/products";
 import "./Home.css";
 
 /* How many products the home page shows before "View All Products" */
 const HOME_PRODUCT_LIMIT = 8;
-
-/* Every brand logo — Innova's two sub-brands (Fix, Crepe) are shown
-   alongside their parent, giving 9 logos. */
-const brandLogos = brands.flatMap((brand) =>
-  brand.children ? [brand, ...brand.children] : [brand]
-);
 
 function Home() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -66,22 +58,7 @@ function Home() {
         </div>
       </section>
 
-      {/* ===== SECTION 3 — OUR BRANDS ===== */}
-      <section className="section section--soft home-brands">
-        <div className="container">
-          <SectionHeading center eyebrow="Our Brands" title="Trusted Brands for Every Need" />
-
-          <ul className="brand-strip">
-            {brandLogos.map((brand) => (
-              <li key={brand.slug} className="brand-strip__item">
-                <SmartImage src={brand.image} alt={brand.name} className="brand-strip__logo" />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ===== SECTION 4 — CTA ===== */}
+      {/* ===== SECTION 3 — CTA ===== */}
       <CTASection
         title="Need bulk or institutional pricing?"
         text="Message us on WhatsApp or call our team for bulk and institutional supply."
