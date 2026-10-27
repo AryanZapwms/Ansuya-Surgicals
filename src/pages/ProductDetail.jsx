@@ -139,9 +139,9 @@ function ProductDetail() {
           {/* ---- Info panel ---- */}
           <Reveal delay={120} className="product-detail__info">
             {brand && (
-              <Link to={brand.path} className="product-detail__brand" style={{ "--brand-color": brand.color }}>
+              <span className="product-detail__brand" style={{ "--brand-color": brand.color }}>
                 {brand.name}
-              </Link>
+              </span>
             )}
 
             <h2 className="product-detail__title">{product.name}</h2>

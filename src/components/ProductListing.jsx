@@ -8,12 +8,24 @@ import "./ProductListing.css";
    PRODUCT LISTING — reusable product grid with optional
    category filter tabs.
    Props:
-   - products:     array of products to show
-   - showFilters:  true to show the category tabs
+   - products:          array of products to show
+   - showFilters:       true to show the category tabs
+   - activeCategory:    optional — selected tab slug, if the parent
+                        controls it (e.g. from the URL)
+   - onCategoryChange:  optional — called with the new slug
+   - limit:             optional — show at most this many products
    ========================================================= */
 
-function ProductListing({ products, showFilters = false }) {
-  const [activeCategory, setActiveCategory] = useState("all");
+function ProductListing({
+  products,
+  showFilters = false,
+  activeCategory: controlledCategory,
+  onCategoryChange,
+  limit,
+}) {
+  const [ownCategory, setOwnCategory] = useState("all");
+  const activeCategory = controlledCategory ?? ownCategory;
+  const setActiveCategory = onCategoryChange ?? setOwnCategory;
 
   const tabs = useMemo(
     () => [
@@ -27,10 +39,11 @@ function ProductListing({ products, showFilters = false }) {
     [products]
   );
 
-  const visibleProducts =
+  const filteredProducts =
     activeCategory === "all"
       ? products
       : products.filter((product) => product.category.includes(activeCategory));
+  const visibleProducts = limit ? filteredProducts.slice(0, limit) : filteredProducts;
 
   return (
     <div className="product-listing">
@@ -53,8 +66,9 @@ function ProductListing({ products, showFilters = false }) {
       )}
 
       <p className="product-listing__summary">
-        Showing <strong>{visibleProducts.length}</strong>{" "}
-        {visibleProducts.length === 1 ? "product" : "products"}
+        Showing <strong>{visibleProducts.length}</strong>
+        {visibleProducts.length < filteredProducts.length && ` of ${filteredProducts.length}`}{" "}
+        {filteredProducts.length === 1 ? "product" : "products"}
       </p>
 
       {visibleProducts.length > 0 ? (

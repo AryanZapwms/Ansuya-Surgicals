@@ -1,11 +1,22 @@
+import { useSearchParams } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import ProductListing from "../components/ProductListing";
 import CTASection from "../components/CTASection";
 import products from "../data/products";
+import categories from "../data/categories";
 import images from "../data/images";
 import "./Products.css";
 
 function Products() {
+  // ?category=<slug> preselects a filter tab (unknown slugs fall back to "All")
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requested = searchParams.get("category");
+  const activeCategory = categories.some((c) => c.slug === requested) ? requested : "all";
+
+  const handleCategoryChange = (slug) => {
+    setSearchParams(slug === "all" ? {} : { category: slug }, { replace: true });
+  };
+
   return (
     <>
       <PageHero
@@ -17,7 +28,12 @@ function Products() {
 
       <section className="section products-page">
         <div className="container">
-          <ProductListing products={products} showFilters />
+          <ProductListing
+            products={products}
+            showFilters
+            activeCategory={activeCategory}
+            onCategoryChange={handleCategoryChange}
+          />
         </div>
       </section>
 

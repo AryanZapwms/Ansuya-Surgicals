@@ -1,7 +1,7 @@
 /* =========================================================
    PRODUCT CATEGORIES
    "slug" must match the "category" value used in products.js
-   "path" is the page URL for that category.
+   "path" opens the Products page with that category preselected.
    ========================================================= */
 import images from "./images";
 
@@ -9,7 +9,7 @@ const categories = [
   {
     slug: "absorbent-dressings",
     name: "Absorbent Dressings",
-    path: "/absorbent-dressings",
+    path: "/products?category=absorbent-dressings",
     image: images.absorbent,
     shortDescription:
       "High-absorbency pads and rolls for effective exudate management.",
@@ -19,7 +19,7 @@ const categories = [
   {
     slug: "bandages",
     name: "Bandages",
-    path: "/bandages",
+    path: "/products?category=bandages",
     image: images.eleasticCreepe,
     shortDescription:
       "Elastic, crepe and conforming bandages for firm support and secure fixation.",
@@ -29,7 +29,7 @@ const categories = [
   {
     slug: "dressings",
     name: "Dressings",
-    path: "/dressings",
+    path: "/products?category=dressings",
     image: images.dressings,
     shortDescription:
       "Sterile wound dressings that protect, cushion and support natural healing.",
@@ -39,7 +39,7 @@ const categories = [
   {
     slug: "medicated-dressing",
     name: "Medicated Dressing",
-    path: "/medicated-dressing",
+    path: "/products?category=medicated-dressing",
     image: images.medicated,
     shortDescription:
       "Antiseptic and medicated dressings that help reduce infection risk.",
@@ -49,7 +49,7 @@ const categories = [
   {
     slug: "protective-equipment",
     name: "Protective Equipment",
-    path: "/protective-equipment",
+    path: "/products?category=protective-equipment",
     image: images.protective,
     shortDescription:
       "Masks, gloves, caps and gowns for safe clinical environments.",

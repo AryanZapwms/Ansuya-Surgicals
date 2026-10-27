@@ -152,11 +152,6 @@
   transition: var(--transition);
 }
 
-.product-detail__brand:hover {
-  background: var(--brand-color, var(--primary));
-  color: #fff;
-}
-
 .product-detail__title {
   font-size: clamp(1.7rem, 3vw, 2.3rem);
   margin-bottom: 16px;

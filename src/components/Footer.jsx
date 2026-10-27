@@ -5,23 +5,11 @@ import Logo from "./Logo";
 import siteConfig from "../config/siteConfig";
 import "./Footer.css";
 
-const productLinks = [
-  { label: "Bandages", path: "/bandages" },
-  { label: "Dressings", path: "/dressings" },
-  { label: "Absorbent Dressings", path: "/absorbent-dressings" },
-  { label: "Medicated Dressing", path: "/medicated-dressing" },
-  { label: "Protective Equipment", path: "/protective-equipment" },
-  { label: "All Products", path: "/products" },
-];
-
-/* Placeholder client categories — replace with real clients later */
-const clients = [
-  "Hospitals",
-  "Clinics",
-  "Nursing Homes",
-  "Healthcare Institutions",
-  "Medical Distributors",
-  "Pharmacies",
+const quickLinks = [
+  { label: "Home", path: "/" },
+  { label: "Products", path: "/products" },
+  { label: "About", path: "/about" },
+  { label: "Contact", path: "/contact" },
 ];
 
 function Footer() {
@@ -36,11 +24,11 @@ function Footer() {
           <p className="footer__desc">{siteConfig.footerDescription}</p>
         </div>
 
-        {/* Column 2 — Products */}
+        {/* Column 2 — Quick links */}
         <div className="footer__col">
-          <h3 className="footer__title">Products</h3>
+          <h3 className="footer__title">Quick Links</h3>
           <ul className="footer__links">
-            {productLinks.map((link) => (
+            {quickLinks.map((link) => (
               <li key={link.path}>
                 <Link to={link.path}>
                   <FiChevronRight aria-hidden="true" />
@@ -51,22 +39,7 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Column 3 — Our Clients */}
-        <div className="footer__col">
-          <h3 className="footer__title">Our Clients</h3>
-          <ul className="footer__links footer__links--static">
-            {clients.map((client) => (
-              <li key={client}>
-                <span>
-                  <FiChevronRight aria-hidden="true" />
-                  {client}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Column 4 — Contact */}
+        {/* Column 3 — Contact */}
         <div className="footer__col">
           <h3 className="footer__title">Contact</h3>
           <ul className="footer__contact">
