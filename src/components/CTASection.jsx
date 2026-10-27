@@ -8,6 +8,7 @@ import "./CTASection.css";
    CTA SECTION — strong call-to-action banner
    Props (all optional):
    - title, text, buttonLabel, buttonLink
+     (a buttonLink starting with "http", e.g. WhatsApp, opens in a new tab)
    ========================================================= */
 
 function CTASection({
@@ -30,9 +31,15 @@ function CTASection({
           </div>
 
           <div className="cta__actions">
-            <Link to={buttonLink} className="btn btn--white">
-              {buttonLabel} <FiArrowRight aria-hidden="true" />
-            </Link>
+            {buttonLink.startsWith("http") ? (
+              <a href={buttonLink} className="btn btn--white" target="_blank" rel="noopener noreferrer">
+                {buttonLabel} <FiArrowRight aria-hidden="true" />
+              </a>
+            ) : (
+              <Link to={buttonLink} className="btn btn--white">
+                {buttonLabel} <FiArrowRight aria-hidden="true" />
+              </Link>
+            )}
             <a href={siteConfig.phoneLink} className="cta__phone">
               <span className="cta__phone-icon">
                 <FiPhoneCall aria-hidden="true" />
