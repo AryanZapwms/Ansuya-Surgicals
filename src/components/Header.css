@@ -1,0 +1,660 @@
+/* =========================================================
+   HEADER
+   Mobile / tablet (below 1024px): logo + hamburger, slide-in menu
+   Laptop / desktop (1024px+):     blue contact bar on top,
+                                   logo + full menu in one row below
+   ========================================================= */
+
+/* ---------- Blue top bar (contact details) ---------- */
+.topbar {
+  display: none;
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 42px;
+}
+
+.topbar__info {
+  display: flex;
+  gap: 28px;
+}
+
+.topbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--transition);
+}
+
+.topbar__item svg {
+  color: #8fb0ff;
+}
+
+a.topbar__item:hover {
+  color: #fff;
+}
+
+.topbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #fff;
+  transition: gap var(--transition);
+}
+
+.topbar__cta:hover {
+  gap: 10px;
+}
+
+/* ---------- Main header (sticky) ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+
+.header--scrolled {
+  box-shadow: 0 6px 24px rgba(10, 22, 51, 0.08);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 72px;
+}
+
+/* ---------- Hamburger ---------- */
+.hamburger {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--primary-50);
+  color: var(--primary);
+  font-size: 1.4rem;
+  transition: var(--transition);
+}
+
+.hamburger:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ---------- Mobile overlay ---------- */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 22, 51, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 1001;
+}
+
+.nav-overlay--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---------- Mobile slide-in menu ---------- */
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: min(360px, 88vw);
+  background: #fff;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -20px 0 50px rgba(10, 22, 51, 0.15);
+}
+
+.nav--open {
+  transform: translateX(0);
+}
+
+.nav__mobile-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav__close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--bg-soft);
+  color: var(--navy);
+  font-size: 1.3rem;
+  transition: var(--transition);
+}
+
+.nav__close:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.nav__list {
+  padding: 12px 14px;
+  flex: 1;
+}
+
+.nav__item {
+  border-bottom: 1px solid var(--bg-soft);
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 10px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--navy);
+  border-radius: 8px;
+  text-align: left;
+  transition:
+    color var(--transition),
+    background var(--transition);
+}
+
+.nav__link:hover {
+  color: var(--primary);
+  background: var(--primary-50);
+}
+
+.nav__link--active {
+  color: var(--primary);
+}
+
+.nav__chevron {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.nav__chevron-btn {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 6px;
+}
+
+.nav__item--dropdown.is-open .nav__chevron {
+  transform: rotate(180deg);
+}
+
+/* Mobile: dropdowns open and close like an accordion */
+.dropdown,
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.nav__item--dropdown.is-open > .dropdown {
+  max-height: 700px;
+}
+
+.dropdown__item--has-sub.is-open > .submenu {
+  max-height: 200px;
+}
+
+.dropdown {
+  padding-left: 10px;
+}
+
+.dropdown__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.dropdown__link:hover,
+.dropdown__link.active {
+  color: var(--primary);
+  background: var(--primary-50);
+}
+
+.dropdown__sub-toggle {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.dropdown__sub-toggle svg {
+  transition: transform var(--transition);
+}
+
+.dropdown__sub-toggle:hover {
+  background: var(--primary-50);
+  color: var(--primary);
+}
+
+.dropdown__item--has-sub.is-open .dropdown__sub-toggle svg {
+  transform: rotate(90deg);
+}
+
+.submenu {
+  padding-left: 22px;
+}
+
+.dropdown__link--sub {
+  font-size: 0.9rem;
+}
+
+.dropdown__link--sub::before {
+  content: "";
+  width: 6px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+/* Contact block at the bottom of the mobile menu */
+.nav__mobile-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 24px 28px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-soft);
+  font-size: 0.92rem;
+}
+
+.nav__mobile-contact a:not(.btn) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.nav__mobile-contact svg {
+  color: var(--primary);
+}
+
+.nav__mobile-contact .btn {
+  margin-top: 6px;
+}
+
+/* =========================================================
+   LAPTOP & DESKTOP (1024px and wider)
+   ========================================================= */
+@media (min-width: 1024px) {
+  .topbar {
+    display: block;
+  }
+
+  .header__inner {
+    height: 80px;
+    gap: 24px;
+  }
+
+  .hamburger,
+  .nav-overlay,
+  .nav__mobile-head,
+  .nav__mobile-contact {
+    display: none;
+  }
+
+  /* Hidden dropdown panels never cause sideways scrolling */
+  .header {
+    overflow-x: clip;
+  }
+
+  .nav {
+    position: static;
+    height: auto;
+    width: auto;
+    transform: none;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+    display: block;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+  }
+
+  .nav__item {
+    position: relative;
+    border: none;
+  }
+
+  .nav__link {
+    position: relative;
+    height: 80px; /* full header height, so dropdowns open right under the header */
+    padding: 0 7px;
+    gap: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    border-radius: 0;
+    color: #4a5570;
+  }
+
+  .nav__link:hover {
+    background: transparent;
+    color: var(--primary);
+  }
+
+  .nav__link--active {
+    color: var(--primary);
+  }
+
+  /* Blue line under the active / hovered link */
+  .nav__link::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    right: 7px;
+    bottom: 0;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px 3px 0 0;
+    transform: scaleX(0);
+    transition: transform var(--transition);
+  }
+
+  .nav__link:hover::after,
+  .nav__link--active::after {
+    transform: scaleX(1);
+  }
+
+  /* ---------- Dropdown panel (Our Brands) ---------- */
+  .dropdown,
+  .submenu {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    padding: 8px 0;
+    background: #fff;
+    border-top: 3px solid var(--primary);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 18px 40px rgba(10, 22, 51, 0.14);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s;
+  }
+
+  /* Opens on hover, keyboard focus, or click */
+  .nav__item--dropdown:hover > .dropdown,
+  .nav__item--dropdown:focus-within > .dropdown,
+  .nav__item--dropdown.is-open > .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav__item--dropdown:hover .nav__chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown__item {
+    position: relative;
+  }
+
+  .dropdown__row {
+    position: relative;
+  }
+
+  .dropdown__link {
+    padding: 11px 22px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    border-radius: 0;
+    border-left: 3px solid transparent;
+  }
+
+  .dropdown__link:hover,
+  .dropdown__link.active {
+    background: var(--bg-soft);
+    color: var(--primary);
+    border-left-color: var(--primary);
+  }
+
+  /* Arrow for Innova sits on the right of the row */
+  .dropdown__sub-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    color: var(--text-light);
+    pointer-events: none; /* hover on the row opens the flyout */
+  }
+
+  .dropdown__sub-toggle:hover {
+    background: transparent;
+  }
+
+  .dropdown__item--has-sub:hover .dropdown__sub-toggle,
+  .dropdown__item--has-sub:focus-within .dropdown__sub-toggle {
+    color: var(--primary);
+  }
+
+  .dropdown__item--has-sub.is-open .dropdown__sub-toggle svg {
+    transform: none;
+  }
+
+  .dropdown__item--has-sub:hover > .dropdown__row .dropdown__link {
+    background: var(--bg-soft);
+    color: var(--primary);
+    border-left-color: var(--primary);
+  }
+
+  /* ---------- Innova side flyout (opens to the right) ---------- */
+  .submenu {
+    position: absolute;
+    top: -8px;
+    left: 100%;
+    min-width: 200px;
+    padding: 8px 0;
+    background: #fff;
+    border-radius: 0 10px 10px 10px;
+    border-left: 3px solid var(--primary);
+    box-shadow: 0 18px 40px rgba(10, 22, 51, 0.14);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(8px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s;
+  }
+
+  .dropdown__item--has-sub:hover > .submenu,
+  .dropdown__item--has-sub:focus-within > .submenu,
+  .dropdown__item--has-sub.is-open > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  /* If there is no space on the right, open the flyout to the left */
+  .dropdown--flyout-left .submenu {
+    left: auto;
+    right: 100%;
+    border-left: none;
+    border-right: 3px solid var(--primary);
+    border-radius: 10px 0 10px 10px;
+    transform: translateX(-8px);
+  }
+
+  .dropdown--flyout-left .dropdown__item--has-sub:hover > .submenu,
+  .dropdown--flyout-left .dropdown__item--has-sub:focus-within > .submenu,
+  .dropdown--flyout-left .dropdown__item--has-sub.is-open > .submenu {
+    transform: translateX(0);
+  }
+
+  .submenu {
+    padding-left: 0;
+  }
+
+  .dropdown__link--sub::before {
+    display: none;
+  }
+}
+
+/* ---------- Small laptops (1024px – 1365px) ----------
+   Two-word menu items go onto two lines so the whole menu
+   fits next to the logo */
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .nav__link {
+    white-space: normal;
+    max-width: 6.6em;
+    text-align: center;
+    justify-content: center;
+    line-height: 1.25;
+  }
+
+  .nav__toggle {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+/* From 1152px there is room to keep "About Us" and "All Products" on one line */
+@media (min-width: 1152px) and (max-width: 1365px) {
+  .nav__link {
+    max-width: 7.4em;
+  }
+
+  .nav__toggle {
+    max-width: none;
+  }
+}
+
+/* ---------- Wider laptops (1200px+) ---------- */
+@media (min-width: 1200px) {
+  .header__inner,
+  .topbar__inner {
+    max-width: 1400px;
+  }
+
+  .nav__link {
+    padding: 0 9px;
+    font-size: 0.84rem;
+  }
+
+  .nav__link::after {
+    left: 9px;
+    right: 9px;
+  }
+}
+
+/* ---------- Large screens (1440px+) ---------- */
+@media (min-width: 1440px) {
+  .header__inner,
+  .topbar__inner {
+    max-width: 1520px;
+  }
+
+  .nav__link {
+    padding: 0 10px;
+    font-size: 0.86rem;
+  }
+
+  .nav__link::after {
+    left: 10px;
+    right: 10px;
+  }
+}
+
+@media (min-width: 1680px) {
+  .nav__link {
+    padding: 0 13px;
+    font-size: 0.92rem;
+  }
+
+  .nav__link::after {
+    left: 13px;
+    right: 13px;
+  }
+}
+
+/* ---------- Small laptops (1024px – 1365px) ----------
+   Two-word menu items go onto two lines so the whole menu
+   fits next to the logo */
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .nav__link {
+    white-space: normal;
+    max-width: 6.6em;
+    text-align: center;
+    justify-content: center;
+    line-height: 1.25;
+  }
+
+  .nav__toggle {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+/* From 1152px there is room to keep "About Us" and "All Products" on one line */
+@media (min-width: 1152px) and (max-width: 1365px) {
+  .nav__link {
+    max-width: 7.4em;
+  }
+
+  .nav__toggle {
+    max-width: none;
+  }
+}

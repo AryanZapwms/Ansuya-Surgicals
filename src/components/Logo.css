@@ -1,0 +1,20 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo__image {
+  height: 56px;
+  width: auto;
+  display: block;
+}
+
+/* Footer logo (JPG, has its own white background) gets a light rounded
+   card so it reads well against the dark footer */
+.logo--light .logo__image {
+  height: 64px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+}

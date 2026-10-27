@@ -1,0 +1,327 @@
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+/* ---------- Main about ---------- */
+.about-main__grid {
+  display: grid;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .about-main__grid {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 80px;
+  }
+}
+
+.about-main__media {
+  position: relative;
+  padding: 0 0 36px 24px;
+}
+
+/* Offset blue frame behind the image */
+.about-main__media::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 24px;
+  bottom: 12px;
+  border: 2px solid var(--primary-200);
+  border-radius: var(--radius-lg);
+}
+
+.about-main__frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  max-height: 600px;
+  width: 100%;
+  box-shadow: var(--shadow);
+}
+
+.about-main__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-main__experience {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.about-main__experience svg {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.about-main__experience span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.about-main__experience strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.about-main__content h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin-bottom: 20px;
+}
+
+.about-main__lead {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+.about-main__content > p:not(.about-main__lead) {
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.about-main__points {
+  display: grid;
+  gap: 12px;
+  margin: 26px 0 34px;
+}
+
+@media (min-width: 560px) {
+  .about-main__points {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-main__points li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.about-main__points svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--primary);
+}
+
+/* ---------- Stats ---------- */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.about-stats__item {
+  padding: 22px 12px;
+  text-align: center;
+  background: var(--bg-softer);
+}
+
+.about-stats__item + .about-stats__item {
+  border-left: 1px solid var(--border);
+}
+
+.about-stats__item strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--primary);
+}
+
+.about-stats__item span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Mission & Vision ---------- */
+.mission {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.mission__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(16, 52, 166, 0.55) 0%, transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(47, 86, 214, 0.35) 0%, transparent 40%);
+}
+
+.mission .container {
+  position: relative;
+}
+
+.mission .section-heading h2 {
+  color: #fff;
+}
+
+.mission .section-heading p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mission .eyebrow {
+  color: #8fb0ff;
+}
+
+.mission .eyebrow::before,
+.mission .eyebrow::after {
+  background: #8fb0ff;
+}
+
+.mission__grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .mission__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mission-card {
+  height: 100%;
+  padding: 44px 36px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+}
+
+.mission-card--accent {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  border-color: transparent;
+}
+
+.mission-card__icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 24px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.mission-card h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
+
+.mission-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.02rem;
+}
+
+/* ---------- Why choose us ---------- */
+.why-us__grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .why-us__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .why-us__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.why-card {
+  position: relative;
+  height: 100%;
+  padding: 36px 28px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.why-card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 0;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 3px 3px 0 0;
+  transform: translateX(-50%);
+  transition: width var(--transition);
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.why-card:hover::after {
+  width: 60%;
+}
+
+.why-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary);
+  font-size: 1.7rem;
+  box-shadow: 0 0 0 8px var(--bg-softer);
+  transition: var(--transition);
+}
+
+.why-card:hover .why-card__icon {
+  background: var(--primary);
+  color: #fff;
+}
+
+.why-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  color: var(--text-muted);
+  font-size: 0.94rem;
+}
+
+.why-us__more {
+  margin-top: 48px;
+  text-align: center;
+}

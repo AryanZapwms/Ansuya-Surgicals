@@ -1,0 +1,9 @@
+/* =========================================================
+   ALL PRODUCTS PAGE
+   (product grid styles live in components/ProductCard.css,
+    filter tab styles in components/ProductListing.css)
+   ========================================================= */
+
+.products-page {
+  background: var(--bg-soft);
+}
