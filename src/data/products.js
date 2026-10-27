@@ -46,7 +46,6 @@ import plasterOfParisBandage from "../assets/images/home-products/Plaster-of-Par
 import plasterOfParisBandageCover from "../assets/images/home-products/Plaster-of-Paris-Bandage-cover.webp";
 import abdominalPads from "../assets/images/home-products/abdominal-paddes.webp";
 import abdominalPadsCover from "../assets/images/home-products/abdominal-paddes-cover.webp";
-import ansuyaSurgeonGown from "../assets/images/home-products/ansuya-4-surgeon-gown.webp";
 import cannulaFixator from "../assets/images/home-products/cannula-fixator.webp";
 import cannulaFixatorCover from "../assets/images/home-products/cannuala-fixatorcover.webp";
 import cottonGamjeePad from "../assets/images/home-products/cotton-Gamjee-pad-1-600x600.webp";

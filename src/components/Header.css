@@ -191,106 +191,6 @@ a.topbar__item:hover {
   color: var(--primary);
 }
 
-.nav__chevron {
-  flex-shrink: 0;
-  transition: transform var(--transition);
-}
-
-.nav__chevron-btn {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-  padding: 6px;
-}
-
-.nav__item--dropdown.is-open .nav__chevron {
-  transform: rotate(180deg);
-}
-
-/* Mobile: dropdowns open and close like an accordion */
-.dropdown,
-.submenu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-
-.nav__item--dropdown.is-open > .dropdown {
-  max-height: 700px;
-}
-
-.dropdown__item--has-sub.is-open > .submenu {
-  max-height: 200px;
-}
-
-.dropdown {
-  padding-left: 10px;
-}
-
-.dropdown__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.dropdown__link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  padding: 10px 12px;
-  font-size: 0.93rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  border-radius: 8px;
-  transition: var(--transition);
-}
-
-.dropdown__link:hover,
-.dropdown__link.active {
-  color: var(--primary);
-  background: var(--primary-50);
-}
-
-.dropdown__sub-toggle {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  color: var(--text-muted);
-  transition: var(--transition);
-}
-
-.dropdown__sub-toggle svg {
-  transition: transform var(--transition);
-}
-
-.dropdown__sub-toggle:hover {
-  background: var(--primary-50);
-  color: var(--primary);
-}
-
-.dropdown__item--has-sub.is-open .dropdown__sub-toggle svg {
-  transform: rotate(90deg);
-}
-
-.submenu {
-  padding-left: 22px;
-}
-
-.dropdown__link--sub {
-  font-size: 0.9rem;
-}
-
-.dropdown__link--sub::before {
-  content: "";
-  width: 6px;
-  height: 2px;
-  background: currentColor;
-  border-radius: 2px;
-}
-
 /* Contact block at the bottom of the mobile menu */
 .nav__mobile-contact {
   display: flex;
@@ -405,152 +305,6 @@ a.topbar__item:hover {
   .nav__link--active::after {
     transform: scaleX(1);
   }
-
-  /* ---------- Dropdown panel (Our Brands) ---------- */
-  .dropdown,
-  .submenu {
-    max-height: none;
-    overflow: visible;
-  }
-
-  .dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 240px;
-    padding: 8px 0;
-    background: #fff;
-    border-top: 3px solid var(--primary);
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 18px 40px rgba(10, 22, 51, 0.14);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition:
-      opacity 0.25s ease,
-      transform 0.25s ease,
-      visibility 0.25s;
-  }
-
-  /* Opens on hover, keyboard focus, or click */
-  .nav__item--dropdown:hover > .dropdown,
-  .nav__item--dropdown:focus-within > .dropdown,
-  .nav__item--dropdown.is-open > .dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .nav__item--dropdown:hover .nav__chevron {
-    transform: rotate(180deg);
-  }
-
-  .dropdown__item {
-    position: relative;
-  }
-
-  .dropdown__row {
-    position: relative;
-  }
-
-  .dropdown__link {
-    padding: 11px 22px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text);
-    border-radius: 0;
-    border-left: 3px solid transparent;
-  }
-
-  .dropdown__link:hover,
-  .dropdown__link.active {
-    background: var(--bg-soft);
-    color: var(--primary);
-    border-left-color: var(--primary);
-  }
-
-  /* Arrow for Innova sits on the right of the row */
-  .dropdown__sub-toggle {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    color: var(--text-light);
-    pointer-events: none; /* hover on the row opens the flyout */
-  }
-
-  .dropdown__sub-toggle:hover {
-    background: transparent;
-  }
-
-  .dropdown__item--has-sub:hover .dropdown__sub-toggle,
-  .dropdown__item--has-sub:focus-within .dropdown__sub-toggle {
-    color: var(--primary);
-  }
-
-  .dropdown__item--has-sub.is-open .dropdown__sub-toggle svg {
-    transform: none;
-  }
-
-  .dropdown__item--has-sub:hover > .dropdown__row .dropdown__link {
-    background: var(--bg-soft);
-    color: var(--primary);
-    border-left-color: var(--primary);
-  }
-
-  /* ---------- Innova side flyout (opens to the right) ---------- */
-  .submenu {
-    position: absolute;
-    top: -8px;
-    left: 100%;
-    min-width: 200px;
-    padding: 8px 0;
-    background: #fff;
-    border-radius: 0 10px 10px 10px;
-    border-left: 3px solid var(--primary);
-    box-shadow: 0 18px 40px rgba(10, 22, 51, 0.14);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(8px);
-    transition:
-      opacity 0.25s ease,
-      transform 0.25s ease,
-      visibility 0.25s;
-  }
-
-  .dropdown__item--has-sub:hover > .submenu,
-  .dropdown__item--has-sub:focus-within > .submenu,
-  .dropdown__item--has-sub.is-open > .submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-  }
-
-  /* If there is no space on the right, open the flyout to the left */
-  .dropdown--flyout-left .submenu {
-    left: auto;
-    right: 100%;
-    border-left: none;
-    border-right: 3px solid var(--primary);
-    border-radius: 10px 0 10px 10px;
-    transform: translateX(-8px);
-  }
-
-  .dropdown--flyout-left .dropdown__item--has-sub:hover > .submenu,
-  .dropdown--flyout-left .dropdown__item--has-sub:focus-within > .submenu,
-  .dropdown--flyout-left .dropdown__item--has-sub.is-open > .submenu {
-    transform: translateX(0);
-  }
-
-  .submenu {
-    padding-left: 0;
-  }
-
-  .dropdown__link--sub::before {
-    display: none;
-  }
 }
 
 /* ---------- Small laptops (1024px – 1365px) ----------
@@ -564,21 +318,12 @@ a.topbar__item:hover {
     justify-content: center;
     line-height: 1.25;
   }
-
-  .nav__toggle {
-    max-width: none;
-    white-space: nowrap;
-  }
 }
 
 /* From 1152px there is room to keep "About Us" and "All Products" on one line */
 @media (min-width: 1152px) and (max-width: 1365px) {
   .nav__link {
     max-width: 7.4em;
-  }
-
-  .nav__toggle {
-    max-width: none;
   }
 }
 
@@ -641,20 +386,11 @@ a.topbar__item:hover {
     justify-content: center;
     line-height: 1.25;
   }
-
-  .nav__toggle {
-    max-width: none;
-    white-space: nowrap;
-  }
 }
 
 /* From 1152px there is room to keep "About Us" and "All Products" on one line */
 @media (min-width: 1152px) and (max-width: 1365px) {
   .nav__link {
     max-width: 7.4em;
-  }
-
-  .nav__toggle {
-    max-width: none;
   }
 }

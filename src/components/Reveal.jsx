@@ -8,17 +8,12 @@ import { useEffect, useRef, useState } from "react";
 
 function Reveal({ children, delay = 0, as: Tag = "div", className = "" }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  // Older browsers without IntersectionObserver: just show the content
+  const [visible, setVisible] = useState(() => !("IntersectionObserver" in window));
 
   useEffect(() => {
     const element = ref.current;
-    if (!element) return;
-
-    // Older browsers: just show the content
-    if (!("IntersectionObserver" in window)) {
-      setVisible(true);
-      return;
-    }
+    if (!element || !("IntersectionObserver" in window)) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {

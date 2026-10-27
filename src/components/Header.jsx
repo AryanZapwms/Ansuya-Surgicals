@@ -26,6 +26,13 @@ function Header() {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuPath, setMenuPath] = useState(location.pathname);
+
+  // Close the mobile menu whenever the page changes
+  if (menuPath !== location.pathname) {
+    setMenuPath(location.pathname);
+    setMobileOpen(false);
+  }
 
   // Add a shadow to the header after scrolling a little
   useEffect(() => {
@@ -34,11 +41,6 @@ function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Close the mobile menu whenever the page changes
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
 
   // Stop the page scrolling behind the open mobile menu
   useEffect(() => {

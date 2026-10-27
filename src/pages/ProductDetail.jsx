@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   FiArrowRight,
@@ -51,7 +51,13 @@ function ProductDetail() {
 
   // Gallery state must be declared before any early return (Rules of Hooks)
   const [activeIndex, setActiveIndex] = useState(0);
-  useEffect(() => setActiveIndex(0), [id]);
+  const [galleryId, setGalleryId] = useState(id);
+
+  // Back to the first photo when a different product opens
+  if (galleryId !== id) {
+    setGalleryId(id);
+    setActiveIndex(0);
+  }
 
   if (!product) return <NotFound />;
 

@@ -13,12 +13,7 @@ const addressLines = [
 ];
 
 const siteConfig = {
-  // ---- Logo / Company name (placeholder) ----
-  // To use a real logo image: put your logo in src/assets/images/
-  // then import it in src/components/Logo.jsx (instructions are there).
-  logoTextMain: "Ansuya",
-  logoTextAccent: "Surgicals",
-  logoTagline: "Surgical Care",
+  // ---- Company name (the logo image itself is set in src/components/Logo.jsx) ----
   companyName: "Ansuya Surgicals Ltd.",
 
   // ---- Short description used in the footer ----
