@@ -3,14 +3,12 @@
    "slug" must match the "category" value used in products.js
    "path" opens the Products page with that category preselected.
    ========================================================= */
-import images from "./images";
 
 const categories = [
   {
     slug: "absorbent-dressings",
     name: "Absorbent Dressings",
     path: "/products?category=absorbent-dressings",
-    image: images.absorbent,
     shortDescription:
       "High-absorbency pads and rolls for effective exudate management.",
     description:
@@ -20,7 +18,6 @@ const categories = [
     slug: "bandages",
     name: "Bandages",
     path: "/products?category=bandages",
-    image: images.eleasticCreepe,
     shortDescription:
       "Elastic, crepe and conforming bandages for firm support and secure fixation.",
     description:
@@ -30,7 +27,6 @@ const categories = [
     slug: "dressings",
     name: "Dressings",
     path: "/products?category=dressings",
-    image: images.dressings,
     shortDescription:
       "Sterile wound dressings that protect, cushion and support natural healing.",
     description:
@@ -40,7 +36,6 @@ const categories = [
     slug: "medicated-dressing",
     name: "Medicated Dressing",
     path: "/products?category=medicated-dressing",
-    image: images.medicated,
     shortDescription:
       "Antiseptic and medicated dressings that help reduce infection risk.",
     description:
@@ -50,7 +45,6 @@ const categories = [
     slug: "protective-equipment",
     name: "Protective Equipment",
     path: "/products?category=protective-equipment",
-    image: images.protective,
     shortDescription:
       "Masks, gloves, caps and gowns for safe clinical environments.",
     description:

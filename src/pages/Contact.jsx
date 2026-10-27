@@ -4,7 +4,6 @@ import { FaWhatsapp } from "react-icons/fa6";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
-import images from "../data/images";
 import "./Contact.css";
 
 /* Puts each item on its own line */
@@ -51,7 +50,6 @@ function Contact() {
       <PageHero
         title="Contact Us"
         subtitle="Have a question about our products or need a quote? Our team is here to help."
-        image={images.contactBanner}
         breadcrumbs={[{ label: "Home", path: "/" }, { label: "Contact" }]}
       />
 

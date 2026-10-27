@@ -76,9 +76,6 @@ function ProductDetail() {
 
       {/* ===== HERO / BREADCRUMB ===== */}
       <section className="page-hero product-detail-hero">
-        {category && (
-          <img className="page-hero__image" src={category.image} alt="" aria-hidden="true" />
-        )}
         <div className="page-hero__overlay" />
         <div className="page-hero__pattern" aria-hidden="true" />
 

@@ -32,7 +32,6 @@ function About() {
       <PageHero
         title="About Us"
         subtitle="Manufacturer of medical and surgical dressings."
-        image={images.aboutBanner}
         breadcrumbs={[{ label: "Home", path: "/" }, { label: "About Us" }]}
       />
 

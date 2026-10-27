@@ -4,7 +4,6 @@ import ProductListing from "../components/ProductListing";
 import CTASection from "../components/CTASection";
 import products from "../data/products";
 import categories from "../data/categories";
-import images from "../data/images";
 import siteConfig from "../config/siteConfig";
 import "./Products.css";
 
@@ -25,7 +24,6 @@ function Products() {
       <PageHero
         title="All Products"
         subtitle="Browse our complete range of medical and surgical dressing products. Use the filters to find exactly what you need."
-        image={images.productsBanner}
         breadcrumbs={[{ label: "Home", path: "/" }, { label: "Products" }]}
       />
 
