@@ -15,7 +15,7 @@ import NotFound from "./NotFound";
 import products from "../data/products";
 import categories from "../data/categories";
 import brands from "../data/brands";
-import siteConfig from "../config/siteConfig";
+import siteConfig, { getProductEnquiryUrl } from "../config/siteConfig";
 import "./ProductDetail.css";
 
 /* =========================================================
@@ -169,12 +169,14 @@ function ProductDetail() {
             </div>
 
             <div className="product-detail__actions">
-              <Link
-                to={`/contact?product=${encodeURIComponent(product.name)}`}
+              <a
+                href={getProductEnquiryUrl(product.name)}
                 className="product-detail__enquire"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Enquire Now <FiArrowRight aria-hidden="true" />
-              </Link>
+              </a>
               <a href={siteConfig.phoneLink} className="product-detail__call">
                 Call Us
               </a>
@@ -216,12 +218,14 @@ function ProductDetail() {
                       <Link to={`/products/${related.id}`} className="product-card__btn product-card__btn--ghost">
                         Read More
                       </Link>
-                      <Link
-                        to={`/contact?product=${encodeURIComponent(related.name)}`}
+                      <a
+                        href={getProductEnquiryUrl(related.name)}
                         className="product-card__btn"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Enquire Now <FiArrowRight aria-hidden="true" />
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </article>
@@ -235,7 +239,7 @@ function ProductDetail() {
         title={`Interested in ${product.name}?`}
         text="Send us an enquiry with your quantity and specification requirements and our team will get back to you shortly."
         buttonLabel="Send an Enquiry"
-        buttonLink={`/contact?product=${encodeURIComponent(product.name)}`}
+        buttonLink="/contact"
       />
     </>
   );

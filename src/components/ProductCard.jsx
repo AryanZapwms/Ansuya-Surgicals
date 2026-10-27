@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import SmartImage from "./SmartImage";
 import categories from "../data/categories";
+import { getProductEnquiryUrl } from "../config/siteConfig";
 import "./ProductCard.css";
 
 /* =========================================================
@@ -31,12 +32,14 @@ function ProductCard({ product }) {
           <Link to={`/products/${product.id}`} className="product-card__btn product-card__btn--ghost">
             Read More
           </Link>
-          <Link
-            to={`/contact?product=${encodeURIComponent(product.name)}`}
+          <a
+            href={getProductEnquiryUrl(product.name)}
             className="product-card__btn"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Enquire Now <FiArrowRight aria-hidden="true" />
-          </Link>
+          </a>
         </div>
       </div>
     </article>

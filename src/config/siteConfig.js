@@ -64,4 +64,9 @@ export function getWhatsAppUrl(message) {
   return message ? `${url}?text=${encodeURIComponent(message)}` : url;
 }
 
+/* WhatsApp link used by every "Enquire Now" button */
+export function getProductEnquiryUrl(productName) {
+  return getWhatsAppUrl(`Hello, I would like to enquire about: ${productName}`);
+}
+
 export default siteConfig;
