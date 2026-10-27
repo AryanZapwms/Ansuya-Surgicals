@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { FiPhone, FiMail, FiMapPin, FiClock, FiChevronRight, FiFileText } from "react-icons/fi";
+import { FiPhone, FiMail, FiMapPin, FiChevronRight, FiFileText } from "react-icons/fi";
 import Logo from "./Logo";
 import siteConfig from "../config/siteConfig";
 import "./Footer.css";
@@ -108,13 +108,6 @@ function Footer() {
               <div>
                 <small>GST No.</small>
                 <span>{siteConfig.gstNumber}</span>
-              </div>
-            </li>
-            <li>
-              <span className="footer__icon"><FiClock aria-hidden="true" /></span>
-              <div>
-                <small>Business Hours</small>
-                <span>{siteConfig.businessHours}</span>
               </div>
             </li>
           </ul>

@@ -39,21 +39,12 @@ const siteConfig = {
   // WhatsApp number (country code + number, no "+" or spaces)
   whatsappNumber: "919167733790",
 
-  // TBD — real email address not confirmed yet (placeholder)
-  email: "info@example.com",
-  emailLink: "mailto:info@example.com",
+  email: "ansuyasurgicals@gmail.com",
+  emailLink: "mailto:ansuyasurgicals@gmail.com",
 
   addressLines,
   address: addressLines.join(" "),
   gstNumber: "27AADCA0305N1ZW",
-
-  // TBD — real business hours not confirmed yet (placeholder)
-  businessHours: "Mon – Sat: 9:30 AM – 6:30 PM",
-
-  // ---- Google Map (search embed for the address above, no API key needed) ----
-  mapEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent(
-    addressLines.join(" ")
-  )}&output=embed`,
 
   copyrightYear: 2026,
 };

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { FiPhone, FiMail, FiMapPin, FiClock, FiCheckCircle } from "react-icons/fi";
+import { FiPhone, FiMail, FiMapPin, FiFileText, FiCheckCircle } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa6";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -37,9 +37,9 @@ const contactCards = [
     content: lines(siteConfig.addressLines),
   },
   {
-    icon: <FiClock />,
-    title: "Business Hours",
-    content: siteConfig.businessHours,
+    icon: <FiFileText />,
+    title: "GST No.",
+    content: siteConfig.gstNumber,
   },
 ];
 
@@ -109,18 +109,6 @@ function Contact() {
             </a>
           </Reveal>
         </div>
-      </section>
-
-      {/* ===== Map ===== */}
-      <section className="contact-map" aria-label="Our location on the map">
-        {/* Change the map location in src/config/siteConfig.js → mapEmbedUrl */}
-        <iframe
-          title="Company location map"
-          src={siteConfig.mapEmbedUrl}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
-        />
       </section>
     </>
   );

@@ -3,7 +3,6 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   FiPhone,
   FiMail,
-  FiClock,
   FiChevronDown,
   FiChevronRight,
   FiMenu,
@@ -142,9 +141,6 @@ function Header() {
             <a href={siteConfig.emailLink} className="topbar__item">
               <FiMail aria-hidden="true" /> {siteConfig.email}
             </a>
-            <span className="topbar__item">
-              <FiClock aria-hidden="true" /> {siteConfig.businessHours}
-            </span>
           </div>
           <Link to="/contact" className="topbar__cta">
             Send an Enquiry <FiArrowRight aria-hidden="true" />
