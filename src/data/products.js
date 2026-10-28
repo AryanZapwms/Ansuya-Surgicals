@@ -1,8 +1,8 @@
 /* =========================================================
    PRODUCTS
-   Real catalog built from the images in
-   src/assets/images/home-products (the same 22 photos shown
-   in the "Our Product Range" carousel on the home page).
+   Product names, brands, categories, sizes and details come
+   from the client's old website catalogue. Photos are in
+   src/assets/images/home-products.
 
    Each product has:
    - id:          unique number (never repeat)
@@ -20,6 +20,10 @@
    - gallery:     optional array of extra imported photos shown as
                   additional thumbnails on the product detail page
    - description: short one or two line description
+   - sizes:       list of available sizes, shown as written
+                  (empty list = nothing shown)
+   - details:     list of short factual points
+                  (empty list = nothing shown)
    ========================================================= */
 
 import castPadding from "../assets/images/home-products/Cast-Padding.webp";
@@ -117,34 +121,70 @@ const products = [
     id: 1,
     name: "Abdominal Pad (Sterile & Non-Sterile)",
     category: ["absorbent-dressings", "dressings"],
-    brand: "soft-pad",
+    brand: "clinisafe",
     image: abdominalPads,
     hoverImage: abdominalPadsCover,
     gallery: [abdominalPads3, abdominalPads4],
     description:
-      "High-absorbency abdominal pad available in sterile and non-sterile options for post-operative and heavy-exudate wound care.",
+      "Highly absorbent abdominal pad with X-ray detectable thread, used as a mopping pad in abdominal surgery. Sterilised by gamma radiation.",
+    sizes: [
+      "25 x 25 cm x 8 ply",
+      "25 x 40 cm x 8 ply",
+      "30 x 30 cm x 8 ply",
+      "Other sizes can be made to customer requirement",
+    ],
+    details: [
+      "With X-ray detectable thread",
+      "Used as a mopping pad in abdominal surgery",
+      "Highly absorbent",
+      "Sterilised by gamma radiation",
+    ],
   },
   {
     id: 2,
     name: "Combine Dressing",
     category: ["absorbent-dressings", "dressings"],
-    brand: "soft-pad",
+    brand: "clinisafe",
     image: combineDressing,
     hoverImage: combineDressingCover,
     gallery: [combineDressing3],
     description:
-      "Multi-layer combine dressing pad for surgical wounds requiring extra absorbency and cushioning.",
+      "Post-operative dressing for moderate and heavily secreting wounds, with a non-adherent absorbent over wrap. Sterilised by gamma radiation.",
+    sizes: [
+      "10 x 10 cm (pouch pack)",
+      "10 x 20 cm (pouch pack)",
+    ],
+    details: [
+      "Non-adherent absorbent over wrap",
+      "Dressing can be changed and the wound inspected without disturbance",
+      "Sterilised by gamma radiation",
+      "Post-operative dressing for moderate and heavily secreting wounds",
+    ],
   },
   {
     id: 3,
     name: "Cotton Gamjee Pad",
     category: ["absorbent-dressings", "dressings"],
-    brand: "ansuya",
+    brand: "clinisafe",
     image: cottonGamjeePad,
     hoverImage: cottonGamjeePadCover,
     gallery: [cottonGamjeePad3, cottonGamjeePad4],
     description:
-      "Soft cotton gamjee pad used for padding, absorption and protection in general clinical care.",
+      "Absorbent cotton wool I.P. in gauze B.P., used as a sterile combine dressing pad and post-operative dressing.",
+    sizes: [
+      "20 x 10 cm",
+      "15 x 10 cm",
+      "10 x 10 cm",
+      "5 x 8 cm",
+      "5 x 5 cm",
+    ],
+    details: [
+      "Absorbent cotton wool I.P. in gauze B.P.",
+      "Used as a sterile combine dressing pad",
+      "Post-operative dressing",
+      "Sterilised by gamma radiation",
+      "Available in poly pack and paper pack",
+    ],
   },
   {
     id: 4,
@@ -155,7 +195,15 @@ const products = [
     hoverImage: gamjeeRollCover,
     gallery: [gamjeeRoll3, gamjeeRoll4, gamjeeRoll5],
     description:
-      "Cotton wool enclosed in gauze, rolled for convenient padding, absorption and protection.",
+      "Highly absorbent cotton wool, used in hospitals for primary wound dressing and bandaging.",
+    sizes: [
+      "10 cm x 2.7 m",
+      "15 cm x 2.7 m",
+    ],
+    details: [
+      "Highly absorbent cotton wool",
+      "Used in hospitals for primary wound dressing and bandaging",
+    ],
   },
   {
     id: 5,
@@ -166,7 +214,16 @@ const products = [
     hoverImage: gauzeSwabsCover,
     gallery: [gauzeSwabs3, gauzeSwabs4, gauzeSwabs5],
     description:
-      "Soft gauze swabs for cleaning, packing and covering wounds, available sterile and non-sterile.",
+      "Gauze swabs made from fine yarn bleached with hydrogen peroxide for high absorbency. Available with and without X-ray detectable thread.",
+    sizes: [
+      "5 x 5 cm and 7.5 x 7.5 cm in 8/12/16 ply",
+      "10 x 10 cm in 8/12/16 ply",
+    ],
+    details: [
+      "Fine yarn bleached with hydrogen peroxide for high absorbency",
+      "Available with and without X-ray detectable thread",
+      "No foreign material added",
+    ],
   },
 
   // ---------------- BANDAGES ----------------
@@ -179,84 +236,160 @@ const products = [
     hoverImage: cannulaFixatorCover,
     gallery: [cannulaFixator3, cannulaFixator4, cannulaFixator5],
     description:
-      "Secure, breathable fixator that holds IV cannulas firmly in place for patient comfort and safety.",
+      "Non-allergic adhesive cannula fixator with paper and a liner for easy removal.",
+    sizes: [
+      "Small",
+      "Medium",
+      "Large",
+      "Box of 100",
+    ],
+    details: [
+      "Non-allergic",
+      "Adhesive with paper",
+      "Liner for easy removal",
+    ],
   },
   {
     id: 7,
     name: "Cotton Adhesive Tape",
     category: ["bandages"],
-    brand: "innova-fix",
+    brand: "ansuya",
     image: cottonAdhesiveTape,
     hoverImage: cottonAdhesiveTapeCover,
     gallery: [cottonAdhesiveTape3],
     description:
-      "Strong cotton adhesive tape for general-purpose fixation of dressings and bandages.",
+      "Durable, breathable cloth tape that tears in any direction and leaves no sticky residue when removed. Often used to secure splints.",
+    sizes: [],
+    details: [
+      "Durable cloth tape",
+      "Flexible and comfortable",
+      "No sticky residue when removed",
+      "Tears in any direction",
+      "Breathable",
+      "Suited to long-term use",
+      "Often used to secure splints",
+    ],
   },
   {
     id: 8,
     name: "Cotton Crepe Bandage",
     category: ["bandages"],
-    brand: "elastogrip",
+    brand: "innova-crepe",
     image: cottonCrepeBandage,
     hoverImage: cottonCrepeBandageCover,
     gallery: [cottonCrepeBandage3, cottonCrepeBandage4, cottonCrepeBandage5, cottonCrepeBandage6],
     description:
-      "Breathable cotton crepe bandage providing firm, even support and compression.",
+      "Thick-fabric cotton crepe bandage with better elasticity, giving controlled and uniform pressure while allowing normal skin breathing.",
+    sizes: [
+      "6, 8, 10, 15 cm x 4 m (stretched)",
+    ],
+    details: [
+      "Thick fabric",
+      "Better elasticity",
+      "Controlled and uniform pressure",
+      "Allows normal skin breathing",
+    ],
   },
   {
     id: 9,
     name: "Elastic Adhesive Bandages",
     category: ["bandages"],
-    brand: "elastogrip",
+    brand: "innova-fix",
     image: elasticAdhesiveBandages,
     hoverImage: elasticAdhesiveBandagesCover,
     gallery: [elasticAdhesiveBandages3, elasticAdhesiveBandages4, elasticAdhesiveBandages5],
     description:
-      "Self-adhesive elastic bandage offering flexible support and secure fixation.",
+      "Elastic adhesive bandage with a porous, non-allergic adhesive that allows skin breathing, and a plastic liner for easy unrolling.",
+    sizes: [
+      "10 cm x 4/6 m (stretched)",
+      "8 cm x 4/6 m (stretched)",
+      "6 cm x 4/6 m (stretched)",
+      "10 cm x 1 m (stretched)",
+    ],
+    details: [
+      "Porous adhesive that allows skin breathing",
+      "Good elasticity",
+      "Non-allergic adhesive",
+      "Plastic liner for easy unrolling",
+    ],
   },
   {
     id: 10,
     name: "Elastic Crepe Bandage",
     category: ["bandages"],
-    brand: "innova-crepe",
+    brand: "elastogrip",
     image: elasticCrepeBandage,
     hoverImage: elasticCrepeBandageCover,
     gallery: [elasticCrepeBandage3],
     description:
-      "Elastic crepe bandage providing firm, even compression and support for sprains and strains.",
+      "Skin-friendly, soft and absorbent crepe bandage that provides firm compression and support.",
+    sizes: [
+      "6, 8, 10, 15 cm x 4 m (stretched)",
+    ],
+    details: [
+      "Offers support and compression",
+      "Skin-friendly, soft and absorbent",
+      "Provides firm compression and support",
+    ],
   },
   {
     id: 11,
     name: "Microporous Surgical Tape",
     category: ["bandages"],
-    brand: "innova-fix",
+    brand: "ansuya",
     image: microporousSurgicalTape,
     hoverImage: microporousSurgicalTapeCover,
     gallery: [microporousSurgicalTape3, microporousSurgicalTape4],
     description:
-      "Gentle, breathable microporous tape for securing dressings on sensitive skin.",
+      "Surgical paper tape.",
+    sizes: [
+      "1.25, 2.5, 5.0, 7.5 cm x 9 m",
+      "Also available in 5 m",
+    ],
+    details: [
+      "Surgical paper tape",
+    ],
   },
   {
     id: 12,
     name: "Plaster Of Paris Bandage",
     category: ["bandages"],
-    brand: "elastogrip",
+    brand: "ansuya",
     image: plasterOfParisBandage,
     hoverImage: plasterOfParisBandageCover,
     gallery: [plasterOfParisBandage3, plasterOfParisBandage4],
     description:
-      "Plaster of Paris bandage for orthopaedic casting and immobilisation.",
+      "Plaster of Paris bandage with high cast strength, optimum setting time and minimum powder loss.",
+    sizes: [
+      "10 cm x 2.7 m",
+      "15 cm x 2.7 m",
+    ],
+    details: [
+      "High cast strength",
+      "Optimum setting time",
+      "Extra durable",
+      "Minimum powder loss",
+    ],
   },
   {
     id: 13,
     name: "Rolled Bandages",
     category: ["bandages"],
-    brand: "elastogrip",
+    brand: "ansuya",
     image: rolledBandages,
     hoverImage: rolledBandagesCover,
     gallery: [rolledBandages3, rolledBandages4, rolledBandages5],
     description:
-      "Conforming rolled bandage that moulds easily to joints and contours.",
+      "Rolled bandage used to immobilise injured body parts, apply pressure, absorb drainage and secure dressings.",
+    sizes: [
+      "5, 7.5, 10, 15 cm x 3 m",
+    ],
+    details: [
+      "Used to immobilise injured body parts",
+      "Applies pressure",
+      "Absorbs drainage",
+      "Secures dressings",
+    ],
   },
 
   // ---------------- DRESSINGS (remaining, not already listed above) ----------------
@@ -269,7 +402,17 @@ const products = [
     hoverImage: castPaddingCover,
     gallery: [castPadding3],
     description:
-      "Soft synthetic cast padding used under plaster casts for cushioning and protection.",
+      "Cast padding made from natural cellulose fibres, used as a cushion between skin and plaster.",
+    sizes: [
+      "10 cm x 3 m",
+      "15 cm x 3 m",
+    ],
+    details: [
+      "Natural cellulose fibres",
+      "Cushion between skin and plaster",
+      "Absorbs exudate and sweat",
+      "Protects bony prominences",
+    ],
   },
   {
     id: 15,
@@ -280,29 +423,54 @@ const products = [
     hoverImage: chlorhexidineGauzeDressingCover,
     gallery: [chlorhexidineGauzeDressing3, chlorhexidineGauzeDressing4],
     description:
-      "Chlorhexidine-impregnated gauze dressing.",
+      "Gauze dressing coated with Chlorhexidine 0.5% w/w in white soft paraffin, used as a primary wound treatment for burns, skin grafts, ulcers and other injuries.",
+    sizes: [
+      "10 x 10 cm (box of 10)",
+      "30 x 30 cm (box of 10)",
+    ],
+    details: [
+      "Coated with Chlorhexidine 0.5% w/w in white soft paraffin",
+      "Used as a primary wound treatment for burns, skin grafts, ulcers and other injuries",
+    ],
   },
   {
     id: 16,
     name: "Eye Pad",
     category: ["dressings"],
-    brand: "soft-pad",
+    brand: "clinisafe",
     image: eyePad,
     hoverImage: eyePadCover,
     gallery: [eyePad3, eyePad4, eyePad5],
     description:
-      "Soft, absorbent eye pad for post-operative eye care and protection.",
+      "Post-operative dressing for moderate and heavily secreting wounds, with a non-adherent absorbent over wrap. Sterilised by gamma radiation.",
+    sizes: [],
+    details: [
+      "Non-adherent absorbent over wrap",
+      "Dressing can be changed and the wound inspected without disturbing it",
+      "Sterilised by gamma radiation",
+      "Post-operative dressing for moderate and heavily secreting wounds",
+      "Available in paper pack and poly pack",
+    ],
   },
   {
     id: 17,
     name: "Paraffin Gauze Dressing B.P",
     category: ["dressings", "medicated-dressing"],
-    brand: "bactisafe",
+    brand: "clinisafe",
     image: paraffinGauzeDressing,
     hoverImage: paraffinGauzeDressingCover,
     gallery: [paraffinGauzeDressing3, paraffinGauzeDressing4],
     description:
-      "Non-adherent paraffin gauze dressing ideal for burns, grafts and abrasions.",
+      "Sterile gauze dressing impregnated with white soft paraffin, used as a primary wound treatment for burns, skin grafts, ulcers and other injuries.",
+    sizes: [
+      "10 x 10 cm in 1's/2's/5's/10's (aluminium foil pouch)",
+      "10 x 10 cm in 20/24 nos (aluminium tin or plastic container)",
+    ],
+    details: [
+      "Sterile",
+      "Impregnated with white soft paraffin",
+      "Primary wound treatment for burns, skin grafts, ulcers and other injuries",
+    ],
   },
 
   // ---------------- PROTECTIVE EQUIPMENT ----------------
@@ -310,12 +478,16 @@ const products = [
     id: 18,
     name: "Surgeon Gown",
     category: ["protective-equipment"],
-    brand: "savior",
+    brand: "clinisafe",
     image: surgeonGown,
     hoverImage: surgeonGownCover,
     gallery: [surgeonGown3, surgeonGown4, surgeonGown5, surgeonGown6],
     description:
-      "Fluid-resistant disposable surgeon gown for surgical and isolation procedures.",
+      "Available in ULTRA reinforcement, SMMS and non-woven types, along with hand towels.",
+    sizes: [],
+    details: [
+      "Types: ULTRA reinforcement, SMMS, non-woven, hand towels",
+    ],
   },
   // {
   //   id: 19,
@@ -330,11 +502,23 @@ const products = [
     id: 20,
     name: "Disposable HIV Protection Kit",
     category: ["protective-equipment"],
-    brand: "savior",
+    brand: "clinisafe",
     image: disposableHivKit,
     hoverImage: disposableHivKitCover,
     description:
-      "Complete disposable protection kit for safe handling of high-risk procedures.",
+      "Disposable kit containing a face mask, cap, gown, bed sheet, goggle, shoe covers, nitrile gloves and a disposal bag. Also available as a 3D HIV kit (3 kits).",
+    sizes: [],
+    details: [
+      "Face mask 1 pc (3 ply)",
+      "Cap 1 pc",
+      "Gown 1 pc",
+      "Bed sheet 1 pc",
+      "Goggle 1 pc",
+      "Shoe cover 1 pair (2 nos)",
+      "Gloves 1 pair nitrile (2 nos)",
+      "Disposal bag 1 pc",
+      "Also available as a 3D HIV kit (3 kits)",
+    ],
   },
   {
     id: 21,
@@ -345,7 +529,14 @@ const products = [
     hoverImage: plainPolyethyleneSheetCover,
     gallery: [plainPolyethyleneSheet3],
     description:
-      "Waterproof polyethylene sheet for bed protection and general clinical use.",
+      "Plain polyethylene sheet, also known as green sheet or bed sheet.",
+    sizes: [
+      "140 x 150 cm",
+      "Other sizes on request",
+    ],
+    details: [
+      "Also known as green sheet / bed sheet",
+    ],
   },
   {
     id: 22,
@@ -356,7 +547,13 @@ const products = [
     hoverImage: plainSheetPremiumCover,
     gallery: [plainSheetPremium3],
     description:
-      "Plain protective sheet for hospital and clinical settings.",
+      "Biodegradable plain sheet.",
+    sizes: [
+      "Regular 120 x 210 cm",
+    ],
+    details: [
+      "Biodegradable plain sheet",
+    ],
   },
 ];
 

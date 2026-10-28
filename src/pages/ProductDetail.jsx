@@ -148,6 +148,28 @@ function ProductDetail() {
             <h2 className="product-detail__title">{product.name}</h2>
             <p className="product-detail__desc">{product.description}</p>
 
+            {product.sizes?.length > 0 && (
+              <div className="product-detail__spec">
+                <h3>Sizes</h3>
+                <ul>
+                  {product.sizes.map((size) => (
+                    <li key={size}>{size}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {product.details?.length > 0 && (
+              <div className="product-detail__spec">
+                <h3>Details</h3>
+                <ul>
+                  {product.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <ul className="product-detail__points">
               {trustPoints.map((point) => (
                 <li key={point.text}>

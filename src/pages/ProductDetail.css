@@ -164,6 +164,31 @@
   margin-bottom: 26px;
 }
 
+/* Sizes / Details lists */
+.product-detail__spec {
+  margin-bottom: 24px;
+}
+
+.product-detail__spec h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  letter-spacing: 0;
+}
+
+.product-detail__spec ul {
+  display: grid;
+  gap: 6px;
+  padding-left: 20px;
+  list-style: disc;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.product-detail__spec li::marker {
+  color: var(--primary);
+}
+
 .product-detail__points {
   display: flex;
   flex-wrap: wrap;
