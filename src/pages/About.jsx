@@ -31,7 +31,7 @@ function About() {
 
       <PageHero
         title="About Us"
-        subtitle="Manufacturer of medical and surgical dressings."
+        subtitle="Making surgical dressings since 1996."
         breadcrumbs={[{ label: "Home", path: "/" }, { label: "About Us" }]}
       />
 
@@ -52,12 +52,18 @@ function About() {
             <span className="eyebrow">Who We Are</span>
             <h2>{siteConfig.companyName}</h2>
             <p className="about-main__lead">
-              {siteConfig.companyName} manufactures medical and surgical dressings — bandages,
-              wound dressings, absorbent and medicated dressings, and protective equipment.
+              {siteConfig.companyName} has made surgical dressings since 1996. The company began
+              as a general trading business and grew across India under its own brands, opening
+              its own manufacturing facility in 2010.
             </p>
             <p>
-              We supply a diverse clientele, including Private &amp; Corporate Hospitals,
-              Government Hospitals, Medical Institutions and Armed Forces Hospitals.
+              Our corporate office is in Mumbai and our manufacturing facility is in Nalasopara,
+              Vasai (Maharashtra). A network of regional representatives and channel partners
+              serves customers across India.
+            </p>
+            <p>
+              We supply private and corporate hospitals, government hospitals, medical
+              institutions and armed forces hospitals.
             </p>
 
             <h3 className="about-main__subtitle">Our Brands</h3>
