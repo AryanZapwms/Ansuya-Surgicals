@@ -16,6 +16,12 @@ const lines = (items) =>
   ));
 
 const contactCards = [
+  ...siteConfig.addresses.map((address) => ({
+    icon: <FiMapPin />,
+    title: address.label,
+    content: lines(address.lines),
+    wide: true,
+  })),
   {
     icon: <FiPhone />,
     title: "Phone",
@@ -29,11 +35,6 @@ const contactCards = [
     icon: <FiMail />,
     title: "Email",
     content: <a href={siteConfig.emailLink}>{siteConfig.email}</a>,
-  },
-  {
-    icon: <FiMapPin />,
-    title: "Address",
-    content: lines(siteConfig.addressLines),
   },
   {
     icon: <FiFileText />,
@@ -58,7 +59,11 @@ function Contact() {
         <div className="container">
           <div className="contact-cards">
             {contactCards.map((card, index) => (
-              <Reveal key={card.title} delay={index * 80}>
+              <Reveal
+                key={card.title}
+                delay={index * 80}
+                className={card.wide ? "contact-cards__wide" : ""}
+              >
                 <div className="contact-card">
                   <span className="contact-card__icon" aria-hidden="true">{card.icon}</span>
                   <h3>{card.title}</h3>

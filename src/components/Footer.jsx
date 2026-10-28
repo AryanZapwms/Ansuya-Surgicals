@@ -62,20 +62,15 @@ function Footer() {
                 <a href={siteConfig.emailLink}>{siteConfig.email}</a>
               </div>
             </li>
-            <li>
-              <span className="footer__icon"><FiMapPin aria-hidden="true" /></span>
-              <div>
-                <small>Address</small>
-                <span>
-                  {siteConfig.addressLines.map((line, index) => (
-                    <Fragment key={line}>
-                      {index > 0 && <br />}
-                      {line}
-                    </Fragment>
-                  ))}
-                </span>
-              </div>
-            </li>
+            {siteConfig.addresses.map((address) => (
+              <li key={address.label}>
+                <span className="footer__icon"><FiMapPin aria-hidden="true" /></span>
+                <div>
+                  <small>{address.label}</small>
+                  <span>{address.lines.join(" ")}</span>
+                </div>
+              </li>
+            ))}
             <li>
               <span className="footer__icon"><FiFileText aria-hidden="true" /></span>
               <div>

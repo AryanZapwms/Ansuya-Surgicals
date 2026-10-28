@@ -14,15 +14,31 @@
   margin-top: -56px;
 }
 
+/* Tablet: 2 columns; the last card (GST) spans the full row */
 @media (min-width: 560px) {
   .contact-cards {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .contact-cards > :last-child {
+    grid-column: 1 / -1;
+  }
 }
 
+/* Desktop: the two addresses share the first row,
+   phone / email / GST share the second */
 @media (min-width: 1100px) {
   .contact-cards {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .contact-cards > *,
+  .contact-cards > :last-child {
+    grid-column: span 2;
+  }
+
+  .contact-cards > .contact-cards__wide {
+    grid-column: span 3;
   }
 }
 

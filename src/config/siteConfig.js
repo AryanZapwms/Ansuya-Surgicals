@@ -4,7 +4,15 @@
    Contact page and CTA sections automatically.
    ========================================================= */
 
-// ---- Address (one entry per line, shown multi-line where the layout allows) ----
+// ---- Addresses (one entry per line, shown multi-line where the layout allows) ----
+const corporateOfficeLines = [
+  "Office No. 33, Whispering Palms Shopping Centre,",
+  "Alika Nagar, Lokhandwala Township,",
+  "Kandivali (East), Mumbai,",
+  "Maharashtra 400101",
+];
+
+// Factory address (also shown on the About page)
 const addressLines = [
   "Unit No. 4, Balaji Industrial Estate,",
   "Chaudhary Compound, Village Dhaniv,",
@@ -36,6 +44,12 @@ const siteConfig = {
 
   email: "ansuyasurgicals@gmail.com",
   emailLink: "mailto:ansuyasurgicals@gmail.com",
+
+  // Labelled addresses — shown in the Footer and on the Contact page
+  addresses: [
+    { label: "Corporate Office", lines: corporateOfficeLines },
+    { label: "Factory", lines: addressLines },
+  ],
 
   addressLines,
   address: addressLines.join(" "),
