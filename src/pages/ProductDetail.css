@@ -189,31 +189,6 @@
   color: var(--primary);
 }
 
-.product-detail__points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
-.product-detail__points li {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.product-detail__points svg {
-  color: var(--primary);
-  font-size: 1.05rem;
-}
-
 .product-detail__categories {
   display: flex;
   flex-wrap: wrap;

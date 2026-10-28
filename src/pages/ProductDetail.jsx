@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import {
   FiArrowRight,
   FiCheck,
-  FiTruck,
   FiChevronRight,
 } from "react-icons/fi";
 import SmartImage from "../components/SmartImage";
@@ -25,10 +24,6 @@ import "./ProductDetail.css";
    extra gallery photos, full description and an Enquire Now
    call to action.
    ========================================================= */
-
-const trustPoints = [
-  { icon: <FiTruck />, text: "Bulk & institutional supply" },
-];
 
 function findBrand(slug) {
   for (const brand of brands) {
@@ -169,15 +164,6 @@ function ProductDetail() {
                 </ul>
               </div>
             )}
-
-            <ul className="product-detail__points">
-              {trustPoints.map((point) => (
-                <li key={point.text}>
-                  <span aria-hidden="true">{point.icon}</span>
-                  {point.text}
-                </li>
-              ))}
-            </ul>
 
             <div className="product-detail__categories">
               {product.category.map((slug) => {
