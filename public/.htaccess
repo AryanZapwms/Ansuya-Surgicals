@@ -1,5 +1,41 @@
 RewriteEngine On
 RewriteBase /
+
+# ---- 301 redirects from the old WordPress site ----
+RewriteRule ^shop/?$ /products [R=301,L]
+RewriteRule ^about-us/?$ /about [R=301,L]
+RewriteRule ^contact-us/?$ /contact [R=301,L]
+RewriteRule ^(cart|checkout|my-account|home-2|evercompare|pdf-page)/?$ / [R=301,L]
+RewriteRule ^shop/bandages/?$ /products?category=bandages [R=301,L]
+RewriteRule ^shop/dressings/?$ /products?category=dressings [R=301,L]
+RewriteRule ^shop/absorbent-dressings/?$ /products?category=absorbent-dressings [R=301,L]
+RewriteRule ^shop/medicated-dressing/?$ /products?category=medicated-dressing [R=301,L]
+RewriteRule ^shop/protective-equipment/?$ /products?category=protective-equipment [R=301,L]
+
+# Old product pages -> new product pages (ids from src/data/products.js)
+RewriteRule ^shop/[^/]+/eye-pad/?$ /products/16 [R=301,L]
+RewriteRule ^shop/[^/]+/surgeon-gown/?$ /products [R=301,L]
+RewriteRule ^shop/[^/]+/elastic-adhesive-bandages/?$ /products/9 [R=301,L]
+RewriteRule ^shop/[^/]+/cannula-fixator/?$ /products/6 [R=301,L]
+RewriteRule ^shop/[^/]+/cotton-crepe-bandage/?$ /products/8 [R=301,L]
+RewriteRule ^shop/[^/]+/cotton-adhesive-tape/?$ /products/7 [R=301,L]
+RewriteRule ^shop/[^/]+/plaster-of-paris-bandage/?$ /products/12 [R=301,L]
+RewriteRule ^shop/[^/]+/cast-padding/?$ /products/14 [R=301,L]
+RewriteRule ^shop/[^/]+/cotton-gamjee-roll/?$ /products/4 [R=301,L]
+RewriteRule ^shop/[^/]+/chlorhexidine-gauze-dressing-b-p/?$ /products/15 [R=301,L]
+RewriteRule ^shop/[^/]+/paraffin-gauze-dressing-b-p/?$ /products/17 [R=301,L]
+RewriteRule ^shop/[^/]+/microporous-surgical-tape/?$ /products/11 [R=301,L]
+RewriteRule ^shop/[^/]+/gauze-swab-sterile-non-sterile/?$ /products/5 [R=301,L]
+RewriteRule ^shop/[^/]+/abdominal-pad-b-p-sterile-non-sterile/?$ /products/1 [R=301,L]
+RewriteRule ^shop/[^/]+/rolled-bandages/?$ /products/13 [R=301,L]
+RewriteRule ^shop/[^/]+/cotton-gamjee-pad/?$ /products/3 [R=301,L]
+RewriteRule ^shop/[^/]+/combine-dressing/?$ /products/2 [R=301,L]
+RewriteRule ^shop/[^/]+/plain-polyethylene-sheet/?$ /products/21 [R=301,L]
+RewriteRule ^shop/[^/]+/plain-sheet-premium/?$ /products/22 [R=301,L]
+RewriteRule ^shop/[^/]+/disposable-hiv-protection-kit/?$ /products/20 [R=301,L]
+RewriteRule ^shop/[^/]+/elastic-crepe-bandage/?$ /products/10 [R=301,L]
+
+# ---- Single-page app: send every other URL to index.html ----
 RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
