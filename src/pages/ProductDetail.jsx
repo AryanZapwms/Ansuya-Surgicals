@@ -3,9 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import {
   FiArrowRight,
   FiCheck,
-  FiShield,
   FiTruck,
-  FiAward,
   FiChevronRight,
 } from "react-icons/fi";
 import SmartImage from "../components/SmartImage";
@@ -29,8 +27,6 @@ import "./ProductDetail.css";
    ========================================================= */
 
 const trustPoints = [
-  { icon: <FiShield />, text: "Quality-checked materials" },
-  { icon: <FiAward />, text: "Trusted by hospitals & clinics" },
   { icon: <FiTruck />, text: "Bulk & institutional supply" },
 ];
 

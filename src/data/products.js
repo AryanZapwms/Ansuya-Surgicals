@@ -280,7 +280,7 @@ const products = [
     hoverImage: chlorhexidineGauzeDressingCover,
     gallery: [chlorhexidineGauzeDressing3, chlorhexidineGauzeDressing4],
     description:
-      "Chlorhexidine-impregnated gauze dressing that helps reduce the risk of wound infection.",
+      "Chlorhexidine-impregnated gauze dressing.",
   },
   {
     id: 16,
@@ -356,7 +356,7 @@ const products = [
     hoverImage: plainSheetPremiumCover,
     gallery: [plainSheetPremium3],
     description:
-      "Premium quality plain protective sheet for hospital and clinical settings.",
+      "Plain protective sheet for hospital and clinical settings.",
   },
 ];
 

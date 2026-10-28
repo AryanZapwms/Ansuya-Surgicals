@@ -10,7 +10,7 @@ const categories = [
     name: "Absorbent Dressings",
     path: "/products?category=absorbent-dressings",
     shortDescription:
-      "High-absorbency pads and rolls for effective exudate management.",
+      "Abdominal pads, combine dressings, gamjee pads and rolls, and gauze swabs.",
     description:
       "Our absorbent dressings are designed to manage moderate to heavy exudate, keeping the wound area clean and dry. Ideal for surgical wounds, trauma care and general ward use.",
   },
@@ -19,7 +19,7 @@ const categories = [
     name: "Bandages",
     path: "/products?category=bandages",
     shortDescription:
-      "Elastic, crepe and conforming bandages for firm support and secure fixation.",
+      "Crepe, elastic adhesive, plaster of Paris and rolled bandages, plus cannula fixators and surgical tapes.",
     description:
       "Our bandage range offers dependable compression, support and fixation for sprains, post-operative care and everyday clinical use. Each bandage is designed for comfort, breathability and consistent elasticity.",
   },
@@ -28,7 +28,7 @@ const categories = [
     name: "Dressings",
     path: "/products?category=dressings",
     shortDescription:
-      "Sterile wound dressings that protect, cushion and support natural healing.",
+      "Pads, gauze swabs, combine dressings, eye pads, cast padding and gauze dressings.",
     description:
       "From sterile gauze to transparent film and island dressings, our wound dressings are engineered to protect wounds, manage moisture and support faster, safer healing across hospital and home-care settings.",
   },
@@ -37,7 +37,7 @@ const categories = [
     name: "Medicated Dressing",
     path: "/products?category=medicated-dressing",
     shortDescription:
-      "Antiseptic and medicated dressings that help reduce infection risk.",
+      "Chlorhexidine and paraffin gauze dressings.",
     description:
       "Our medicated dressing range combines trusted wound-care materials with antiseptic and soothing agents to help reduce the risk of infection and support a healthy healing environment.",
   },
@@ -46,7 +46,7 @@ const categories = [
     name: "Protective Equipment",
     path: "/products?category=protective-equipment",
     shortDescription:
-      "Masks, gloves, caps and gowns for safe clinical environments.",
+      "Surgeon gowns, disposable HIV protection kits and plain protective sheets.",
     description:
       "Our protective equipment helps healthcare professionals maintain safe, hygienic working environments. The range includes surgical masks, examination gloves, caps, shoe covers and gowns.",
   },
