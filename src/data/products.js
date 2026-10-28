@@ -442,15 +442,9 @@ const products = [
     hoverImage: eyePadCover,
     gallery: [eyePad3, eyePad4, eyePad5],
     description:
-      "Post-operative dressing for moderate and heavily secreting wounds, with a non-adherent absorbent over wrap. Sterilised by gamma radiation.",
+      "Eye pad.",
     sizes: [],
-    details: [
-      "Non-adherent absorbent over wrap",
-      "Dressing can be changed and the wound inspected without disturbing it",
-      "Sterilised by gamma radiation",
-      "Post-operative dressing for moderate and heavily secreting wounds",
-      "Available in paper pack and poly pack",
-    ],
+    details: [],
   },
   {
     id: 17,
