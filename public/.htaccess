@@ -14,7 +14,7 @@ RewriteRule ^shop/protective-equipment/?$ /products?category=protective-equipmen
 
 # Old product pages -> new product pages (ids from src/data/products.js)
 RewriteRule ^shop/[^/]+/eye-pad/?$ /products/16 [R=301,L]
-RewriteRule ^shop/[^/]+/surgeon-gown/?$ /products [R=301,L]
+RewriteRule ^shop/[^/]+/surgeon-gown/?$ /products/18 [R=301,L]
 RewriteRule ^shop/[^/]+/elastic-adhesive-bandages/?$ /products/9 [R=301,L]
 RewriteRule ^shop/[^/]+/cannula-fixator/?$ /products/6 [R=301,L]
 RewriteRule ^shop/[^/]+/cotton-crepe-bandage/?$ /products/8 [R=301,L]
