@@ -237,7 +237,7 @@ a.topbar__item:hover {
     display: none;
   }
 
-  /* Hidden dropdown panels never cause sideways scrolling */
+  /* Nothing in the header causes sideways scrolling */
   .header {
     overflow-x: clip;
   }
@@ -269,7 +269,7 @@ a.topbar__item:hover {
 
   .nav__link {
     position: relative;
-    height: 80px; /* full header height, so dropdowns open right under the header */
+    height: 80px; /* full header height, so the active underline sits on the header edge */
     padding: 0 7px;
     gap: 4px;
     font-size: 0.8rem;
