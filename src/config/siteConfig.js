@@ -7,8 +7,8 @@
 // ---- Address (one entry per line, shown multi-line where the layout allows) ----
 const addressLines = [
   "Unit No. 4, Balaji Industrial Estate,",
-  "Chaudhari Compound, Village Dhaniv,",
-  "Wakanpada, Nallasopara (E),",
+  "Chaudhary Compound, Village Dhaniv,",
+  "Wakanpada, Nalasopara (E),",
   "Dist. Palghar - 401209",
 ];
 
