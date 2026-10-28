@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FiPackage } from "react-icons/fi";
 import ProductCard from "./ProductCard";
 import categories from "../data/categories";
@@ -26,6 +26,20 @@ function ProductListing({
   const [ownCategory, setOwnCategory] = useState("all");
   const activeCategory = controlledCategory ?? ownCategory;
   const setActiveCategory = onCategoryChange ?? setOwnCategory;
+  const tabsRef = useRef(null);
+
+  // Phones: the tab row scrolls sideways, so bring an off-screen active tab
+  // (e.g. /products?category=protective-equipment) into view on mount
+  useEffect(() => {
+    const row = tabsRef.current;
+    const active = row?.querySelector(".is-active");
+    if (!row || !active) return;
+    const rowBox = row.getBoundingClientRect();
+    const tabBox = active.getBoundingClientRect();
+    if (tabBox.left < rowBox.left || tabBox.right > rowBox.right) {
+      active.scrollIntoView({ inline: "center", block: "nearest" });
+    }
+  }, []);
 
   const tabs = useMemo(
     () => [
@@ -48,7 +62,12 @@ function ProductListing({
   return (
     <div className="product-listing">
       {showFilters && (
-        <div className="filter-tabs" role="tablist" aria-label="Filter products by category">
+        <div
+          ref={tabsRef}
+          className="filter-tabs"
+          role="tablist"
+          aria-label="Filter products by category"
+        >
           {tabs.map((tab) => (
             <button
               key={tab.slug}

@@ -123,12 +123,16 @@ a.topbar__item:hover {
   flex-direction: column;
   overflow-y: auto;
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: -20px 0 50px rgba(10, 22, 51, 0.15);
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s ease;
 }
 
+/* The shadow only while open: on the closed (off-screen) menu it would spill
+   back into view as a grey strip down the right edge of the page */
 .nav--open {
   transform: translateX(0);
+  box-shadow: -20px 0 50px rgba(10, 22, 51, 0.15);
 }
 
 .nav__mobile-head {

@@ -15,6 +15,27 @@
   display: none;
 }
 
+/* Phones: one sideways-scrolling row. It runs on into the container's
+   20px right gutter (to the screen edge, not beyond) so the next tab peeks
+   in, and that edge fades out as a hint that more tabs follow. The right
+   padding lets the last tab scroll clear of the fade. */
+@media (max-width: 639px) {
+  .filter-tabs {
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    margin-right: -20px;
+    padding-right: 36px;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent);
+  }
+
+  .filter-tab {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+}
+
 @media (min-width: 900px) {
   .filter-tabs {
     flex-wrap: wrap;
