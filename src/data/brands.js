@@ -36,4 +36,11 @@ export function findBrand(slug) {
   return allBrands.find((brand) => brand.slug === slug) ?? null;
 }
 
+/* Product brand slugs that count as this brand: itself plus any sub-brands
+   (filtering by "innova" shows Innova Fix and Innova Crepe products) */
+export function brandFamily(slug) {
+  const brand = findBrand(slug);
+  return brand ? [brand.slug, ...(brand.children ?? []).map((child) => child.slug)] : [];
+}
+
 export default brands;

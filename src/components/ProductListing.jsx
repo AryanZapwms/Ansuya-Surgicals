@@ -27,16 +27,20 @@ function ProductListing({
   const activeCategory = controlledCategory ?? ownCategory;
   const setActiveCategory = onCategoryChange ?? setOwnCategory;
 
+  // Categories with no products in this list (e.g. after a brand filter)
+  // are left out, unless that category is the one selected
   const tabs = useMemo(
     () => [
       { slug: "all", name: "All", count: products.length },
-      ...categories.map((category) => ({
-        slug: category.slug,
-        name: category.name,
-        count: products.filter((p) => p.category.includes(category.slug)).length,
-      })),
+      ...categories
+        .map((category) => ({
+          slug: category.slug,
+          name: category.name,
+          count: products.filter((p) => p.category.includes(category.slug)).length,
+        }))
+        .filter((tab) => tab.count > 0 || tab.slug === activeCategory),
     ],
-    [products]
+    [products, activeCategory]
   );
 
   const filteredProducts =

@@ -7,3 +7,52 @@
 .products-page {
   background: var(--bg-soft);
 }
+
+/* ---------- Brand filter row (pastel brand colours from index.css) ---------- */
+.brand-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+@media (min-width: 900px) {
+  .brand-filter {
+    justify-content: center;
+  }
+}
+
+.brand-filter__chip {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--tone-bg, #fff);
+  color: var(--tone-ink, var(--blue));
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+/* "All Brands" has no brand colour, so it gets a white chip with a border */
+.brand-filter__chip.brand-tone--all {
+  border-color: var(--border);
+}
+
+.brand-filter__chip:hover {
+  background: var(--tone-bg-hover, var(--tint));
+}
+
+.brand-filter__chip.is-active {
+  background: var(--tone-ink, var(--blue));
+  border-color: var(--tone-ink, var(--blue));
+  color: #fff;
+}
+
+@media (max-width: 639px) {
+  .brand-filter__chip {
+    padding: 6px 11px;
+    font-size: 0.74rem;
+  }
+}

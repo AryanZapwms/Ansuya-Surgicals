@@ -10,6 +10,7 @@ import ProductListing from "../components/ProductListing";
 import CTASection from "../components/CTASection";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
 import products from "../data/products";
+import { allBrands } from "../data/brands";
 import collageCrepeBandage from "../assets/images/home/collage-crepe-bandage.webp";
 import collageSoftPadPacks from "../assets/images/home/collage-soft-pad-packs.webp";
 import collageGamjeeRoll from "../assets/images/home/collage-gamjee-roll.webp";
@@ -152,6 +153,27 @@ function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ===== OUR BRANDS — pastel tiles, each opens its products ===== */}
+      <section className="section home-brands">
+        <div className="container">
+          <SectionHeading center title="Our Brands" />
+          <ul className="home-brands__grid">
+            {allBrands.map((brand, index) => (
+              <li key={brand.slug}>
+                <Reveal delay={index * 50}>
+                  <Link
+                    to={`/products?brand=${brand.slug}`}
+                    className={`brand-tile brand-tone--${brand.slug}`}
+                  >
+                    {brand.name}
+                  </Link>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
