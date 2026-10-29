@@ -25,4 +25,15 @@ const brands = [
   { slug: "soft-pad", name: "Soft Pad", color: "#1C4FD8" },
 ];
 
+/* Every brand in one flat list, sub-brands right after their parent
+   (… Innova, Innova Fix, Innova Crepe …) */
+export const allBrands = brands.flatMap((brand) =>
+  brand.children ? [brand, ...brand.children] : [brand]
+);
+
+/* The brand (or sub-brand) with this slug, or null */
+export function findBrand(slug) {
+  return allBrands.find((brand) => brand.slug === slug) ?? null;
+}
+
 export default brands;

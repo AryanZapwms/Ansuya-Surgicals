@@ -208,6 +208,57 @@ h5 {
   font-size: 1.05rem;
 }
 
+/* Small blue bar + yellow dash above a section title (no words) */
+.accent-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.accent-mark::before,
+.accent-mark::after {
+  content: "";
+  height: 3px;
+  border-radius: 3px;
+}
+
+.accent-mark::before {
+  width: 28px;
+  background: var(--blue);
+}
+
+.accent-mark::after {
+  width: 8px;
+  background: var(--yellow);
+}
+
+/* ---------- Brand colours: pastel background + dark ink ----------
+   Used by brand chips on product cards, the Our Brands tiles
+   and the brand filter on the Products page */
+.brand-tone--ansuya { --tone-bg: #eaf1ff; --tone-bg-hover: #dce7fe; --tone-ink: #002a78; }
+.brand-tone--bactisafe { --tone-bg: #e6f8f3; --tone-bg-hover: #d3f3eb; --tone-ink: #0f766e; }
+.brand-tone--clinisafe { --tone-bg: #e0f2fe; --tone-bg-hover: #cbeafe; --tone-ink: #0369a1; }
+.brand-tone--elastogrip { --tone-bg: #fef3c7; --tone-bg-hover: #fde9a8; --tone-ink: #92400e; }
+.brand-tone--innova { --tone-bg: #eef2ff; --tone-bg-hover: #e0e7fe; --tone-ink: #3730a3; }
+.brand-tone--innova-fix { --tone-bg: #f3e8ff; --tone-bg-hover: #ead3fe; --tone-ink: #6b21a8; }
+.brand-tone--innova-crepe { --tone-bg: #ffe4e6; --tone-bg-hover: #ffd1d6; --tone-ink: #9f1239; }
+.brand-tone--savior { --tone-bg: #d1fae5; --tone-bg-hover: #bcf5d8; --tone-ink: #065f46; }
+.brand-tone--soft-pad { --tone-bg: #cffafe; --tone-bg-hover: #b8f3fa; --tone-ink: #155e75; }
+
+.brand-chip {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--tone-bg, var(--tint));
+  color: var(--tone-ink, var(--blue));
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;

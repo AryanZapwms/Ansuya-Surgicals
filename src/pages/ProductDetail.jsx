@@ -11,7 +11,7 @@ import CTASection from "../components/CTASection";
 import NotFound from "./NotFound";
 import products from "../data/products";
 import categories from "../data/categories";
-import brands from "../data/brands";
+import { findBrand } from "../data/brands";
 import siteConfig, { getProductEnquiryUrl } from "../config/siteConfig";
 import "./ProductDetail.css";
 
@@ -24,17 +24,6 @@ import "./ProductDetail.css";
    extra gallery photos, full description and an Enquire Now
    call to action.
    ========================================================= */
-
-function findBrand(slug) {
-  for (const brand of brands) {
-    if (brand.slug === slug) return brand;
-    if (brand.children) {
-      const child = brand.children.find((c) => c.slug === slug);
-      if (child) return child;
-    }
-  }
-  return null;
-}
 
 function ProductDetail() {
   const { id } = useParams();

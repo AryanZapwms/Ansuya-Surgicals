@@ -85,6 +85,11 @@
   }
 }
 
+/* ---------- Featured products ---------- */
+.home-featured {
+  background: var(--surface);
+}
+
 /* ---------- Products ---------- */
 .home-products__more {
   display: flex;

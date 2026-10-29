@@ -1,0 +1,148 @@
+/* =========================================================
+   FEATURED PRODUCTS — sideways-scrolling product cards
+   ========================================================= */
+
+.featured__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.featured__title {
+  font-size: clamp(1.7rem, 3vw, 2.1rem);
+}
+
+.featured__arrows {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.featured__arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--blue-dark);
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.featured__arrow:hover:not(:disabled) {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.featured__arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* The row reaches into the container's side padding so cards can be
+   swiped right to the screen edge on phones */
+.featured__track {
+  display: flex;
+  gap: 20px;
+  margin: 0 -20px;
+  padding: 8px 20px 28px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.featured__track::-webkit-scrollbar {
+  display: none;
+}
+
+.featured__track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .featured__track {
+    margin: 0 -32px;
+    padding: 8px 32px 28px;
+    scroll-padding: 0 32px;
+  }
+}
+
+/* ---------- Card ---------- */
+.featured-card {
+  flex: 0 0 auto;
+  width: min(76vw, 288px);
+  scroll-snap-align: start;
+}
+
+.featured-card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #eef2f7;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.featured-card__media {
+  display: block;
+  margin: 14px 0 18px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--bg-soft);
+}
+
+.featured-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.featured-card__title {
+  flex: 1;
+  color: var(--blue-dark);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.featured-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+  color: var(--blue);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .featured-card__link:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .featured-card__link:hover .featured-card__image {
+    transform: scale(1.05);
+  }
+}

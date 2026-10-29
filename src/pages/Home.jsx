@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import HeroCarousel from "../components/HeroCarousel";
+import FeaturedProducts from "../components/FeaturedProducts";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
 import ProductListing from "../components/ProductListing";
@@ -12,6 +13,10 @@ import "./Home.css";
 
 /* How many products the home page shows before "View All Products" */
 const HOME_PRODUCT_LIMIT = 8;
+
+/* Products in the Featured Products carousel, in this order (ids from products.js) */
+const FEATURED_PRODUCT_IDS = [11, 17, 15, 4, 9, 14, 10, 8];
+const featuredProducts = FEATURED_PRODUCT_IDS.map((id) => products.find((p) => p.id === id)).filter(Boolean);
 
 function Home() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -36,6 +41,13 @@ function Home() {
           <Link to="/about" className="btn btn--orange home-band__btn">
             About Us <FiArrowRight aria-hidden="true" />
           </Link>
+        </div>
+      </section>
+
+      {/* ===== FEATURED PRODUCTS ===== */}
+      <section className="section home-featured">
+        <div className="container">
+          <FeaturedProducts title="Featured Products" products={featuredProducts} />
         </div>
       </section>
 
