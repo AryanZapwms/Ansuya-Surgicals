@@ -33,7 +33,7 @@ function ProductCard({ product }) {
 
         <div className="product-card__actions">
           <Link to={`/products/${product.id}`} className="product-card__btn product-card__btn--ghost">
-            Read More
+            Read More<span className="visually-hidden"> about {product.name}</span>
           </Link>
           <a
             href={getProductEnquiryUrl(product.name)}
