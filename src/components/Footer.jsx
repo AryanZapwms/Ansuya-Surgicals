@@ -1,9 +1,15 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { FiPhone, FiMail, FiMapPin, FiChevronRight, FiFileText } from "react-icons/fi";
+import { FiPhone, FiMail, FiFileText } from "react-icons/fi";
 import Logo from "./Logo";
 import siteConfig from "../config/siteConfig";
 import "./Footer.css";
+
+/* =========================================================
+   FOOTER — four columns: logo + links · Corporate Office ·
+   Factory · Contact (phones, email, GST)
+   4 columns → 2 → 1. All details come from siteConfig.js.
+   ========================================================= */
 
 const quickLinks = [
   { label: "Home", path: "/" },
@@ -15,84 +21,64 @@ const quickLinks = [
 function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__glow" aria-hidden="true" />
+      <div className="container">
+        <div className="footer__grid">
+          {/* Column 1 — Logo + quick links */}
+          <div className="footer__col">
+            <Logo variant="light" />
+            <nav aria-label="Footer">
+              <ul className="footer__links">
+                {quickLinks.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
 
-      <div className="container footer__grid">
-        {/* Column 1 — Logo + description */}
-        <div className="footer__col footer__col--brand">
-          <Logo variant="light" />
-          <p className="footer__desc">{siteConfig.footerDescription}</p>
-        </div>
-
-        {/* Column 2 — Quick links */}
-        <div className="footer__col">
-          <h3 className="footer__title">Quick Links</h3>
-          <ul className="footer__links">
-            {quickLinks.map((link) => (
-              <li key={link.path}>
-                <Link to={link.path}>
-                  <FiChevronRight aria-hidden="true" />
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Column 3 — Contact */}
-        <div className="footer__col">
-          <h3 className="footer__title">Contact</h3>
-          <ul className="footer__contact">
-            <li>
-              <span className="footer__icon"><FiPhone aria-hidden="true" /></span>
-              <div>
-                <small>Phone</small>
-                {siteConfig.phones.map((phone, index) => (
-                  <Fragment key={phone.link}>
+          {/* Columns 2 and 3 — Corporate Office, Factory */}
+          {siteConfig.addresses.map((address) => (
+            <div key={address.label} className="footer__col">
+              <h3 className="footer__title">{address.label}</h3>
+              <address className="footer__address">
+                {address.lines.map((line, index) => (
+                  <Fragment key={line}>
                     {index > 0 && <br />}
-                    <a href={phone.link}>{phone.display}</a>
+                    {line}
                   </Fragment>
                 ))}
-              </div>
-            </li>
-            <li>
-              <span className="footer__icon"><FiMail aria-hidden="true" /></span>
-              <div>
-                <small>Email</small>
-                <a href={siteConfig.emailLink}>{siteConfig.email}</a>
-              </div>
-            </li>
-            {siteConfig.addresses.map((address) => (
-              <li key={address.label}>
-                <span className="footer__icon"><FiMapPin aria-hidden="true" /></span>
-                <div>
-                  <small>{address.label}</small>
-                  <span>{address.lines.join(" ")}</span>
-                </div>
-              </li>
-            ))}
-            <li>
-              <span className="footer__icon"><FiFileText aria-hidden="true" /></span>
-              <div>
-                <small>GST No.</small>
-                <span>{siteConfig.gstNumber}</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+              </address>
+            </div>
+          ))}
 
-      <div className="footer__bottom">
-        <div className="container footer__bottom-inner">
-          <p>
-            © {siteConfig.copyrightYear} {siteConfig.companyName} All Rights Reserved.
-          </p>
-          <div className="footer__bottom-links">
-            <Link to="/about">About Us</Link>
-            <Link to="/products">Products</Link>
-            <Link to="/contact">Contact</Link>
+          {/* Column 4 — Phones, email, GST */}
+          <div className="footer__col">
+            <h3 className="footer__title">Contact</h3>
+            <ul className="footer__contact">
+              {siteConfig.phones.map((phone) => (
+                <li key={phone.link}>
+                  <FiPhone aria-hidden="true" />
+                  <a href={phone.link}>{phone.display}</a>
+                </li>
+              ))}
+              <li>
+                <FiMail aria-hidden="true" />
+                <a href={siteConfig.emailLink}>{siteConfig.email}</a>
+              </li>
+              <li>
+                <FiFileText aria-hidden="true" />
+                <span>
+                  <strong>GST No.</strong> {siteConfig.gstNumber}
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
+
+        <p className="footer__bottom">
+          © {siteConfig.copyrightYear} {siteConfig.companyName}
+        </p>
       </div>
     </footer>
   );

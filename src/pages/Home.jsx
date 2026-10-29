@@ -13,6 +13,7 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
 import ProductListing from "../components/ProductListing";
+import BackToTop from "../components/BackToTop";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
 import products from "../data/products";
 import { allBrands } from "../data/brands";
@@ -201,6 +202,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <BackToTop />
     </>
   );
 }
