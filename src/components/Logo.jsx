@@ -23,6 +23,7 @@ function Logo({ variant = "dark" }) {
         className="logo__image"
         width={349}
         height={232}
+        loading={variant === "light" ? "lazy" : undefined}
       />
     </Link>
   );
