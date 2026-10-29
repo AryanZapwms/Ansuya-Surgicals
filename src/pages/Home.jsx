@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
+import { FaBoxesStacked, FaHospital, FaIndustry, FaMapLocationDot } from "react-icons/fa6";
 import HeroCarousel from "../components/HeroCarousel";
 import FeaturedProducts from "../components/FeaturedProducts";
 import SectionHeading from "../components/SectionHeading";
@@ -21,6 +22,30 @@ const HOME_PRODUCT_LIMIT = 8;
 /* Products in the Featured Products carousel, in this order (ids from products.js) */
 const FEATURED_PRODUCT_IDS = [11, 17, 15, 4, 9, 14, 10, 8];
 const featuredProducts = FEATURED_PRODUCT_IDS.map((id) => products.find((p) => p.id === id)).filter(Boolean);
+
+/* What We Do cards — one plain, factual line each (facts from the About page) */
+const services = [
+  {
+    icon: FaIndustry,
+    title: "Manufacturer",
+    text: "Surgical dressings and bandages made at our own facility in Nalasopara.",
+  },
+  {
+    icon: FaBoxesStacked,
+    title: "Wide Product Range",
+    text: "Absorbent dressings, bandages, medicated dressings and protective equipment.",
+  },
+  {
+    icon: FaHospital,
+    title: "Bulk & Institutional Supply",
+    text: "Bulk supply to hospitals and medical institutions.",
+  },
+  {
+    icon: FaMapLocationDot,
+    title: "Pan-India Supply",
+    text: "Supplied across India through regional representatives and channel partners.",
+  },
+];
 
 /* Photo collage next to "Surgical dressings, made in India" (all 720 × 720) */
 const collagePhotos = [
@@ -107,6 +132,26 @@ function Home() {
               View All Products <FiArrowRight aria-hidden="true" />
             </Link>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ===== WHAT WE DO ===== */}
+      <section className="section home-services">
+        <div className="container">
+          <SectionHeading center title="What We Do" />
+          <div className="home-services__grid">
+            {services.map(({ icon: Icon, title, text }, index) => (
+              <Reveal key={title} delay={index * 80}>
+                <div className="home-service">
+                  <span className="home-service__icon" aria-hidden="true">
+                    <Icon />
+                  </span>
+                  <h3 className="home-service__title">{title}</h3>
+                  <p className="home-service__text">{text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
