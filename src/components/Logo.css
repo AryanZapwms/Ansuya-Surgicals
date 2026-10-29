@@ -10,8 +10,8 @@
   display: block;
 }
 
-/* Footer logo (JPG, has its own white background) gets a light rounded
-   card so it reads well against the dark footer */
+/* Footer logo sits on a white rounded card so it reads well against
+   the dark footer */
 .logo--light .logo__image {
   height: 64px;
   background: #fff;
