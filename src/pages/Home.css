@@ -1,63 +1,7 @@
 /* =========================================================
    HOME PAGE
+   (the hero carousel has its own HeroCarousel.css)
    ========================================================= */
-
-/* ---------- Compact hero ---------- */
-.home-hero {
-  position: relative;
-  overflow: hidden;
-  padding: 64px 0 60px;
-  background: linear-gradient(110deg, var(--navy) 0%, var(--primary-dark) 45%, var(--primary) 100%);
-  color: var(--white);
-}
-
-@media (min-width: 768px) {
-  .home-hero {
-    padding: 88px 0 84px;
-  }
-}
-
-/* Subtle dotted pattern fading in from the right side */
-.home-hero__pattern {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 50%;
-  opacity: 0.16;
-  background: radial-gradient(circle, #fff 1.5px, transparent 1.6px) 0 0 / 26px 26px;
-  -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 100%);
-  mask-image: linear-gradient(to left, #000 0%, transparent 100%);
-}
-
-.home-hero__content {
-  position: relative;
-  z-index: 1;
-}
-
-.home-hero__title {
-  color: var(--white);
-  font-size: clamp(2.1rem, 5vw, 3.4rem);
-  line-height: 1.1;
-  margin-bottom: 12px;
-}
-
-.home-hero__tagline {
-  color: rgba(255, 255, 255, 0.82);
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  margin-bottom: 30px;
-}
-
-.home-hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.home-hero__actions .btn--ghost-light svg,
-.home-hero__actions .btn--ghost-light:hover svg {
-  transform: none;
-}
 
 /* ---------- Products ---------- */
 .home-products__more {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiArrowRight, FiPhone } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
+import HeroCarousel from "../components/HeroCarousel";
 import SectionHeading from "../components/SectionHeading";
 import ProductListing from "../components/ProductListing";
 import CTASection from "../components/CTASection";
@@ -20,22 +21,8 @@ function Home() {
     <>
       <title>{`${siteConfig.companyName} | Medical & Surgical Dressings`}</title>
 
-      {/* ===== SECTION 1 — COMPACT HERO ===== */}
-      <section className="home-hero">
-        <div className="home-hero__pattern" aria-hidden="true" />
-        <div className="container home-hero__content">
-          <h1 className="home-hero__title">{siteConfig.companyName}</h1>
-          <p className="home-hero__tagline">Medical &amp; Surgical Dressings</p>
-          <div className="home-hero__actions">
-            <Link to="/products" className="btn btn--white">
-              View Products <FiArrowRight aria-hidden="true" />
-            </Link>
-            <a href={siteConfig.phoneLink} className="btn btn--ghost-light">
-              <FiPhone aria-hidden="true" /> Call Us
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ===== HERO CAROUSEL ===== */}
+      <HeroCarousel />
 
       {/* ===== SECTION 2 — PRODUCTS ===== */}
       <section className="section home-products">

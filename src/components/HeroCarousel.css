@@ -1,0 +1,278 @@
+/* =========================================================
+   HERO CAROUSEL
+   Below 1024px: photo on top, text card overlapping below it
+   1024px+:      photo on the right, text card on the left
+                 over a deep-blue fade
+   ========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 48px;
+  background: var(--blue-dark);
+  color: #fff;
+  touch-action: pan-y;
+}
+
+/* ---------- Slides ---------- */
+.hero__slides {
+  position: relative;
+  height: clamp(220px, 58vw, 400px);
+  background: var(--blue-dark);
+}
+
+/* Fade the photo into the deep blue behind the card */
+.hero__slides::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--blue-dark) 0%, rgba(11, 42, 107, 0.35) 45%, rgba(11, 42, 107, 0) 70%);
+  pointer-events: none;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* Slide 3 — plain brand blue with a dotted pattern */
+.hero__slide--brand {
+  background:
+    radial-gradient(circle at 78% 38%, rgba(47, 95, 208, 0.85) 0%, rgba(47, 95, 208, 0) 42%),
+    radial-gradient(circle at 92% 90%, rgba(247, 147, 30, 0.35) 0%, rgba(247, 147, 30, 0) 30%),
+    linear-gradient(120deg, var(--blue-dark) 0%, var(--blue) 100%);
+}
+
+.hero__slide--brand::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  opacity: 0.22;
+  background: radial-gradient(circle, #fff 1.5px, transparent 1.6px) 0 0 / 24px 24px;
+  -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 0%, transparent 100%);
+}
+
+.hero__slide--brand::after {
+  content: "";
+  position: absolute;
+  top: 14%;
+  right: 8%;
+  width: min(340px, 40vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 216, 0, 0.45);
+}
+
+/* ---------- Text card ---------- */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  margin-top: -64px;
+}
+
+.hero__card {
+  max-width: 576px;
+  padding: 28px 22px;
+  border-radius: var(--radius);
+  background: rgba(11, 42, 107, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__eyebrow-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.hero__title {
+  color: #fff;
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.12;
+  margin-bottom: 14px;
+}
+
+.hero__subline {
+  color: #e2e8f0;
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero__actions .btn {
+  padding: 12px 18px;
+  font-size: 0.88rem;
+}
+
+@media (min-width: 480px) {
+  .hero__actions .btn {
+    padding: 13px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------- Dots, pause and arrows ---------- */
+.hero__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero__dots {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* 24px tall tap area, small pill drawn inside it */
+.hero__dot {
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 2px;
+}
+
+.hero__dot::before {
+  content: "";
+  width: 10px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+  transition:
+    width var(--transition),
+    background var(--transition);
+}
+
+.hero__dot:hover::before {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.hero__dot.is-active::before {
+  width: 32px;
+  background: var(--yellow);
+}
+
+.hero__arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.hero__arrow {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.15rem;
+  transition: background var(--transition);
+}
+
+.hero__arrow:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@media (min-width: 640px) {
+  .hero__card {
+    padding: 36px 36px 30px;
+  }
+}
+
+/* =========================================================
+   LAPTOP & DESKTOP — photo on the right, card on the left
+   ========================================================= */
+@media (min-width: 1024px) {
+  .hero {
+    display: flex;
+    align-items: center;
+    height: 600px;
+    padding-bottom: 0;
+  }
+
+  .hero__slides {
+    position: absolute;
+    inset: 0;
+    height: auto;
+  }
+
+  /* Eased fade, so there is no visible line where the photo starts */
+  .hero__slides::after {
+    background: linear-gradient(
+      90deg,
+      var(--blue-dark) 0%,
+      var(--blue-dark) 34%,
+      rgba(11, 42, 107, 0.94) 40%,
+      rgba(11, 42, 107, 0.8) 47%,
+      rgba(11, 42, 107, 0.55) 55%,
+      rgba(11, 42, 107, 0.25) 64%,
+      rgba(11, 42, 107, 0.08) 72%,
+      rgba(11, 42, 107, 0) 78%
+    );
+  }
+
+  .hero__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 66%;
+  }
+
+  .hero__content {
+    margin-top: 0;
+  }
+
+  .hero__card {
+    padding: 40px 40px 32px;
+    background: rgba(11, 42, 107, 0.88);
+    backdrop-filter: blur(12px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero {
+    height: 640px;
+  }
+}
