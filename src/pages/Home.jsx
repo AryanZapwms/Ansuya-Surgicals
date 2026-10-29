@@ -51,10 +51,10 @@ function Home() {
         </div>
       </section>
 
-      {/* ===== SECTION 2 — PRODUCTS ===== */}
-      <section className="section home-products">
+      {/* ===== OUR PRODUCT RANGE ===== */}
+      <section className="section home-range">
         <div className="container">
-          <SectionHeading center eyebrow="Our Products" title="Our Product Range" />
+          <SectionHeading center title="Our Product Range" />
 
           <ProductListing
             products={products}
@@ -64,8 +64,8 @@ function Home() {
             limit={HOME_PRODUCT_LIMIT}
           />
 
-          <div className="home-products__more">
-            <Link to={viewAllLink} className="btn btn--outline">
+          <div className="home-range__more">
+            <Link to={viewAllLink} className="btn btn--orange">
               View All Products <FiArrowRight aria-hidden="true" />
             </Link>
           </div>

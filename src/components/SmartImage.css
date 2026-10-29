@@ -42,10 +42,11 @@
   opacity: 0;
 }
 
-.smart-image-swap:hover .smart-image-swap__base {
+/* Only swap once the cover photo has downloaded, so there is never a blank frame */
+.smart-image-swap.is-ready:hover .smart-image-swap__base {
   opacity: 0;
 }
 
-.smart-image-swap:hover .smart-image-swap__cover {
+.smart-image-swap.is-ready:hover .smart-image-swap__cover {
   opacity: 1;
 }

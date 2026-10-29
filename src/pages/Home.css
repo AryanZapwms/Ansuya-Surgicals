@@ -90,9 +90,15 @@
   background: var(--surface);
 }
 
-/* ---------- Products ---------- */
-.home-products__more {
+/* ---------- Our product range ---------- */
+.home-range {
+  background: rgba(234, 241, 255, 0.4);
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.home-range__more {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 44px;
 }

@@ -15,11 +15,14 @@ function ProductCard({ product }) {
   return (
     <article className="product-card">
       <div className="product-card__media">
+        {/* Every product photo is square (600 × 600 or 1000 × 1000) */}
         <SmartImage
           src={product.image}
           hoverSrc={product.hoverImage}
           alt={product.name}
           className="product-card__image"
+          width={600}
+          height={600}
         />
         {category && <span className="product-card__badge">{category.name}</span>}
       </div>
