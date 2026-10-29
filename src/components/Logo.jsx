@@ -4,8 +4,7 @@ import logo from "../assets/images/ansuya-logo.webp";
 import "./Logo.css";
 
 /* =========================================================
-   LOGO — one transparent WebP (7 KB, made from
-   "ansuya cre logo.png")
+   LOGO — one transparent WebP (7 KB)
    - Header (variant="dark", default): logo on the white header
    - Footer (variant="light"): logo on a white rounded card
    ========================================================= */

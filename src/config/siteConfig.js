@@ -24,10 +24,6 @@ const siteConfig = {
   // ---- Company name (the logo image itself is set in src/components/Logo.jsx) ----
   companyName: "Ansuya Surgicals Ltd.",
 
-  // ---- Short description used in the footer ----
-  footerDescription:
-    "Delivering reliable medical and surgical dressing solutions designed for quality, safety and patient care.",
-
   // ---- Contact details ----
   // Primary phone — used by every single "Call Us" button
   phone: "+91 91677 33790",

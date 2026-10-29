@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pages and the 21 product pages (ids from src/data/products.js).
+     Add a <url> entry here whenever a product is added. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ansuyasurgicals.com/</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products</loc></url>
+  <url><loc>https://ansuyasurgicals.com/about</loc></url>
+  <url><loc>https://ansuyasurgicals.com/contact</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/1</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/2</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/3</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/4</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/5</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/6</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/7</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/8</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/9</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/10</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/11</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/12</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/13</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/14</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/15</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/16</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/17</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/18</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/20</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/21</loc></url>
+  <url><loc>https://ansuyasurgicals.com/products/22</loc></url>
+</urlset>
