@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiArrowRight } from "react-icons/fi";
-import { FaBoxesStacked, FaHospital, FaIndustry, FaMapLocationDot } from "react-icons/fa6";
+import { FiArrowRight, FiPhone } from "react-icons/fi";
+import {
+  FaBoxesStacked,
+  FaHospital,
+  FaIndustry,
+  FaMapLocationDot,
+  FaWhatsapp,
+} from "react-icons/fa6";
 import HeroCarousel from "../components/HeroCarousel";
 import FeaturedProducts from "../components/FeaturedProducts";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
 import ProductListing from "../components/ProductListing";
-import CTASection from "../components/CTASection";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
 import products from "../data/products";
 import { allBrands } from "../data/brands";
@@ -177,13 +182,25 @@ function Home() {
         </div>
       </section>
 
-      {/* ===== SECTION 3 — CTA ===== */}
-      <CTASection
-        title="Need bulk or institutional pricing?"
-        text="Message us on WhatsApp or call our team for bulk and institutional supply."
-        buttonLabel="Chat on WhatsApp"
-        buttonLink={getWhatsAppUrl("Hello, I would like to enquire about bulk / institutional pricing.")}
-      />
+      {/* ===== CALL TO ACTION — orange-to-blue band ===== */}
+      <section className="home-cta">
+        <div className="container home-cta__inner">
+          <h2 className="home-cta__title">Need bulk or institutional pricing?</h2>
+          <div className="home-cta__actions">
+            <a
+              href={getWhatsAppUrl("Hello, I would like to enquire about bulk / institutional pricing.")}
+              className="btn btn--whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaWhatsapp aria-hidden="true" /> Chat on WhatsApp
+            </a>
+            <a href={siteConfig.phoneLink} className="btn btn--white">
+              <FiPhone aria-hidden="true" /> Call Us
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
