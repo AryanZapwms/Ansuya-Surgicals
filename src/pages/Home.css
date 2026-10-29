@@ -102,3 +102,95 @@
   justify-content: center;
   margin-top: 44px;
 }
+
+/* ---------- Photo collage ---------- */
+.home-photos__grid {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .home-photos__grid {
+    grid-template-columns: 7fr 5fr;
+    gap: 64px;
+  }
+}
+
+.home-photos__collage {
+  position: relative;
+  /* room for the yellow square peeking out at the top right */
+  margin: 16px 16px 0 0;
+}
+
+.home-photos__accent {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 112px;
+  height: 112px;
+  border-radius: var(--radius);
+  background: var(--yellow);
+}
+
+.home-photos__tiles {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #eef2f7;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.home-photos__tile {
+  height: 180px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--bg-soft);
+}
+
+/* Bottom row slightly shorter, as in the reference */
+.home-photos__tile:nth-child(n + 3) {
+  height: 150px;
+}
+
+.home-photos__tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+@media (min-width: 640px) {
+  .home-photos__tile {
+    height: 256px;
+  }
+
+  .home-photos__tile:nth-child(n + 3) {
+    height: 208px;
+  }
+
+  .home-photos__tiles {
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-photos__tile:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.home-photos__title {
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  margin-bottom: 18px;
+}
+
+.home-photos__lead {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  margin-bottom: 28px;
+}

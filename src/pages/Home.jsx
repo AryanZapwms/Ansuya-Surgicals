@@ -9,6 +9,10 @@ import ProductListing from "../components/ProductListing";
 import CTASection from "../components/CTASection";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
 import products from "../data/products";
+import collageCrepeBandage from "../assets/images/home/collage-crepe-bandage.webp";
+import collageSoftPadPacks from "../assets/images/home/collage-soft-pad-packs.webp";
+import collageGamjeeRoll from "../assets/images/home/collage-gamjee-roll.webp";
+import collageGauzeBandage from "../assets/images/home/collage-gauze-bandage.webp";
 import "./Home.css";
 
 /* How many products the home page shows before "View All Products" */
@@ -17,6 +21,14 @@ const HOME_PRODUCT_LIMIT = 8;
 /* Products in the Featured Products carousel, in this order (ids from products.js) */
 const FEATURED_PRODUCT_IDS = [11, 17, 15, 4, 9, 14, 10, 8];
 const featuredProducts = FEATURED_PRODUCT_IDS.map((id) => products.find((p) => p.id === id)).filter(Boolean);
+
+/* Photo collage next to "Surgical dressings, made in India" (all 720 × 720) */
+const collagePhotos = [
+  { src: collageCrepeBandage, alt: "Crepe bandage being wrapped around a hand" },
+  { src: collageSoftPadPacks, alt: "Soft Pad cast padding packs and rolls" },
+  { src: collageGamjeeRoll, alt: "Cotton gamjee roll" },
+  { src: collageGauzeBandage, alt: "Rolled gauze bandage on a hand" },
+];
 
 function Home() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -69,6 +81,32 @@ function Home() {
               View All Products <FiArrowRight aria-hidden="true" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ===== PHOTO COLLAGE ===== */}
+      <section className="section home-photos">
+        <div className="container home-photos__grid">
+          <Reveal className="home-photos__collage">
+            <span className="home-photos__accent" aria-hidden="true" />
+            <div className="home-photos__tiles">
+              {collagePhotos.map((photo) => (
+                <div key={photo.src} className="home-photos__tile">
+                  <img src={photo.src} alt={photo.alt} width={720} height={720} loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={120} className="home-photos__text">
+            <h2 className="home-photos__title">Surgical dressings, made in India</h2>
+            <p className="home-photos__lead">
+              Supplied to hospitals and medical institutions across India.
+            </p>
+            <Link to="/products" className="btn btn--orange">
+              View All Products <FiArrowRight aria-hidden="true" />
+            </Link>
+          </Reveal>
         </div>
       </section>
 
