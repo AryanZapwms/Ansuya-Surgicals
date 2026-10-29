@@ -3,43 +3,58 @@
    ========================================================= */
 
 :root {
-  /* Brand colours */
-  --primary: #1034a6;
-  --primary-dark: #0b2470;
-  --primary-light: #2f56d6;
-  --primary-50: #f1f5ff;
-  --primary-100: #e3eafc;
-  --primary-200: #c5d3f8;
-  --accent: #0e9fb7;
+  /* Brand palette (from design-reference/DESIGN.md) */
+  --blue: #1240a0; /* royal blue — links, active states, band */
+  --blue-dark: #0b2a6b; /* deep blue — headings, hero, footer */
+  --orange: #f7931e; /* main action buttons */
+  --orange-dark: #e07e12;
+  --yellow: #ffd800; /* small accents only */
+  --tint: #eaf1ff; /* light-blue tint behind icons, chips, sections */
+  --surface: #faf8ff; /* off-white section background */
+  --whatsapp: #25d366;
+  --whatsapp-dark: #1fb85a;
+
+  /* Text on the bright orange and green buttons. Deep blue passes WCAG AA
+     contrast; white (as in the reference) does not. */
+  --on-orange: var(--blue-dark);
+  --on-whatsapp: var(--blue-dark);
+
+  /* Older names, mapped onto the palette above */
+  --primary: var(--blue);
+  --primary-dark: var(--blue-dark);
+  --primary-light: #2f5fd0;
+  --primary-50: #f3f7ff;
+  --primary-100: var(--tint);
+  --primary-200: #b8d0fd;
+  --accent: var(--primary-light);
 
   /* Neutrals */
-  --navy: #0a1633;
-  --navy-800: #0f1f45;
-  --text: #1c2740;
-  --text-muted: #5b6782;
-  --text-light: #8a94ab;
-  --border: #e3e8f2;
+  --navy: var(--blue-dark);
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-light: #94a3b8;
+  --border: #d6e3fa;
   --bg: #ffffff;
-  --bg-soft: #f6f8fc;
-  --bg-softer: #fafbfe;
+  --bg-soft: #f4f7fe;
+  --bg-softer: var(--surface);
   --white: #ffffff;
   --success: #12a36d;
 
   /* Typography */
-  --font-heading: "Manrope", "Segoe UI", sans-serif;
+  --font-heading: "Montserrat", "Segoe UI", sans-serif;
   --font-body: "Inter", "Segoe UI", sans-serif;
 
   /* Spacing & shape */
   --container: 1240px;
   --radius-sm: 8px;
-  --radius: 14px;
+  --radius: 16px;
   --radius-lg: 20px;
-  --header-height: 84px;
+  --header-height: 80px;
 
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(10, 22, 51, 0.05);
-  --shadow: 0 10px 30px rgba(10, 22, 51, 0.08);
-  --shadow-lg: 0 20px 50px rgba(16, 52, 166, 0.14);
+  /* Shadows (blue-tinted, as in the reference) */
+  --shadow-sm: 0 4px 12px -2px rgba(11, 42, 107, 0.06), 0 2px 6px -1px rgba(11, 42, 107, 0.04);
+  --shadow: 0 12px 24px -4px rgba(18, 64, 160, 0.12), 0 4px 8px -2px rgba(18, 64, 160, 0.06);
+  --shadow-lg: 0 20px 32px -6px rgba(11, 42, 107, 0.2), 0 8px 16px -4px rgba(11, 42, 107, 0.08);
 
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -200,7 +215,7 @@ h5 {
   justify-content: center;
   gap: 10px;
   padding: 14px 28px;
-  border-radius: 10px;
+  border-radius: 999px;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.95rem;
@@ -262,6 +277,27 @@ h5 {
   border-color: var(--white);
 }
 
+.btn--orange {
+  background: var(--orange);
+  color: var(--on-orange);
+  box-shadow: 0 8px 20px rgba(247, 147, 30, 0.3);
+}
+
+.btn--orange:hover {
+  background: var(--orange-dark);
+  transform: translateY(-2px);
+}
+
+.btn--whatsapp {
+  background: var(--whatsapp);
+  color: var(--on-whatsapp);
+}
+
+.btn--whatsapp:hover {
+  background: var(--whatsapp-dark);
+  transform: translateY(-2px);
+}
+
 .btn--sm {
   padding: 10px 20px;
   font-size: 0.88rem;
@@ -281,6 +317,7 @@ h5 {
   transform: none;
 }
 
+/* Reduced motion: no scroll reveal, no hover lifts, no animations */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -289,5 +326,16 @@ h5 {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .btn:hover,
+  .btn:hover svg {
+    transform: none;
   }
 }

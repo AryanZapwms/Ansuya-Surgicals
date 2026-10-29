@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { FiPhone, FiMail, FiMenu, FiX, FiArrowRight } from "react-icons/fi";
+import { FiPhone, FiMail, FiMenu, FiX } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa6";
 import Logo from "./Logo";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
 import "./Header.css";
 
 /* =========================================================
-   HEADER
+   HEADER — one sticky white bar
    - Laptop / desktop (1024px and wider):
-       Blue top bar: phone + email + WhatsApp link
-       Main bar:     logo on the left, menu on the right (sticky)
+       logo · menu · phone number · Chat on WhatsApp
    - Mobile / tablet (below 1024px):
-       Logo + hamburger button → slide-in menu from the right
+       logo · WhatsApp · hamburger → slide-in menu from the right
+       (the phone number shows from 640px)
    ========================================================= */
 
 /* MENU ORDER — change the order of the menu here */
@@ -70,89 +71,70 @@ function Header() {
     `nav__link ${isActive ? "nav__link--active" : ""}`;
 
   return (
-    <>
-      {/* ---------- Blue top bar with contact details (laptop/desktop only) ---------- */}
-      <div className="topbar">
-        <div className="container topbar__inner">
-          <div className="topbar__info">
-            <a href={siteConfig.phoneLink} className="topbar__item">
+    <header className={`header ${isScrolled ? "header--scrolled" : ""}`}>
+      <div className="container header__inner">
+        <Logo />
+
+        {/* Dark overlay behind the mobile menu */}
+        <div
+          className={`nav-overlay ${mobileOpen ? "nav-overlay--visible" : ""}`}
+          onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
+        />
+
+        <nav
+          id="main-navigation"
+          className={`nav ${mobileOpen ? "nav--open" : ""}`}
+          aria-label="Main navigation"
+        >
+          {/* Mobile menu top bar */}
+          <div className="nav__mobile-head">
+            <Logo />
+            <button
+              type="button"
+              className="nav__close"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+            >
+              <FiX />
+            </button>
+          </div>
+
+          <ul className="nav__list">
+            {navItems.map((item) => (
+              <li key={item.path} className="nav__item">
+                <NavLink to={item.path} end={item.path === "/"} className={navLinkClass}>
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+
+          {/* Contact block at the bottom of the mobile menu */}
+          <div className="nav__mobile-contact">
+            <a href={siteConfig.phoneLink}>
               <FiPhone aria-hidden="true" /> {siteConfig.phone}
             </a>
-            <a href={siteConfig.emailLink} className="topbar__item">
+            <a href={siteConfig.emailLink}>
               <FiMail aria-hidden="true" /> {siteConfig.email}
             </a>
           </div>
+        </nav>
+
+        {/* Phone + WhatsApp (+ hamburger on mobile and tablet) */}
+        <div className="header__actions">
+          <a href={siteConfig.phoneLink} className="header__phone">
+            <FiPhone aria-hidden="true" /> {siteConfig.phone}
+          </a>
           <a
             href={getWhatsAppUrl()}
-            className="topbar__cta"
+            className="header__whatsapp"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Chat on WhatsApp <FiArrowRight aria-hidden="true" />
+            <FaWhatsapp aria-hidden="true" />
+            <span className="header__whatsapp-label">Chat on WhatsApp</span>
           </a>
-        </div>
-      </div>
-
-      {/* ---------- Main header: logo + menu in one row ---------- */}
-      <header className={`header ${isScrolled ? "header--scrolled" : ""}`}>
-        <div className="container header__inner">
-          <Logo />
-
-          {/* Dark overlay behind the mobile menu */}
-          <div
-            className={`nav-overlay ${mobileOpen ? "nav-overlay--visible" : ""}`}
-            onClick={() => setMobileOpen(false)}
-            aria-hidden="true"
-          />
-
-          <nav
-            id="main-navigation"
-            className={`nav ${mobileOpen ? "nav--open" : ""}`}
-            aria-label="Main navigation"
-          >
-            {/* Mobile menu top bar */}
-            <div className="nav__mobile-head">
-              <Logo />
-              <button
-                type="button"
-                className="nav__close"
-                onClick={() => setMobileOpen(false)}
-                aria-label="Close menu"
-              >
-                <FiX />
-              </button>
-            </div>
-
-            <ul className="nav__list">
-              {navItems.map((item) => (
-                <li key={item.path} className="nav__item">
-                  <NavLink to={item.path} end={item.path === "/"} className={navLinkClass}>
-                    {item.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-
-            {/* Contact block at the bottom of the mobile menu */}
-            <div className="nav__mobile-contact">
-              <a href={siteConfig.phoneLink}>
-                <FiPhone aria-hidden="true" /> {siteConfig.phone}
-              </a>
-              <a href={siteConfig.emailLink}>
-                <FiMail aria-hidden="true" /> {siteConfig.email}
-              </a>
-              <a
-                href={getWhatsAppUrl()}
-                className="btn btn--primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Chat on WhatsApp
-              </a>
-            </div>
-          </nav>
-
-          {/* Hamburger button (mobile & tablet only) */}
           <button
             type="button"
             className="hamburger"
@@ -164,8 +146,8 @@ function Header() {
             <FiMenu />
           </button>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }
 

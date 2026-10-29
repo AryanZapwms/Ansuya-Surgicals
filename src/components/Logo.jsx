@@ -19,7 +19,13 @@ function Logo({ variant = "dark" }) {
       className={`logo logo--${variant}`}
       aria-label={`${siteConfig.companyName} — Home`}
     >
-      <img src={logoSrc} alt={siteConfig.companyName} className="logo__image" />
+      <img
+        src={logoSrc}
+        alt={siteConfig.companyName}
+        className="logo__image"
+        width={350}
+        height={233}
+      />
     </Link>
   );
 }
