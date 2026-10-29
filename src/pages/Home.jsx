@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import HeroCarousel from "../components/HeroCarousel";
 import SectionHeading from "../components/SectionHeading";
+import Reveal from "../components/Reveal";
 import ProductListing from "../components/ProductListing";
 import CTASection from "../components/CTASection";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
@@ -23,6 +24,20 @@ function Home() {
 
       {/* ===== HERO CAROUSEL ===== */}
       <HeroCarousel />
+
+      {/* ===== DIAGONAL BLUE BAND ===== */}
+      <section className="home-band">
+        <span className="home-band__watermark" aria-hidden="true">ANSUYA</span>
+        <div className="container home-band__inner">
+          <Reveal className="home-band__text">
+            <h2 className="home-band__title">Medical Surgicals</h2>
+            <p className="home-band__tagline">Your path to healing</p>
+          </Reveal>
+          <Link to="/about" className="btn btn--orange home-band__btn">
+            About Us <FiArrowRight aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
 
       {/* ===== SECTION 2 — PRODUCTS ===== */}
       <section className="section home-products">

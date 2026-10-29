@@ -3,6 +3,88 @@
    (the hero carousel has its own HeroCarousel.css)
    ========================================================= */
 
+/* ---------- Diagonal blue band ----------
+   Slanted top and bottom edges; it overlaps the hero and the next
+   section by half the slant so the angles meet them */
+.home-band {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  margin: -1.4vw 0;
+  padding: 64px 0;
+  background: var(--blue);
+  color: #fff;
+  clip-path: polygon(0 0, 100% 2.8vw, 100% 100%, 0 calc(100% - 2.8vw));
+}
+
+.home-band__watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: clamp(110px, 16vw, 230px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.home-band__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  text-align: center;
+}
+
+.home-band__title {
+  color: #fff;
+  font-size: clamp(1.9rem, 3.6vw, 2.4rem);
+  margin-bottom: 6px;
+}
+
+.home-band__tagline {
+  color: var(--tint);
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-style: italic;
+}
+
+/* Slanted orange button */
+.home-band__btn {
+  padding: 16px 32px;
+  transform: rotate(-2deg);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.35);
+}
+
+.home-band__btn:hover {
+  transform: rotate(-1deg) translateY(-4px);
+}
+
+@media (min-width: 768px) {
+  .home-band__inner {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-band {
+    padding: 80px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-band__btn:hover {
+    transform: rotate(-2deg);
+  }
+}
+
 /* ---------- Products ---------- */
 .home-products__more {
   display: flex;
