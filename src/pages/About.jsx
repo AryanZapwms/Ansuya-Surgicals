@@ -39,11 +39,14 @@ function About() {
       <section className="section about-main">
         <div className="container about-main__grid">
           <Reveal className="about-main__media">
+            <span className="about-main__accent" aria-hidden="true" />
             <div className="about-main__frame">
               <SmartImage
                 src={images.aboutHome}
                 alt="Bandages and wound dressings being applied"
                 className="about-main__image"
+                width={1536}
+                height={1536}
               />
             </div>
           </Reveal>
@@ -85,7 +88,7 @@ function About() {
 
           <div className="about-range__grid">
             {range.map((category, index) => (
-              <Reveal key={category.slug} delay={index * 80} className="range-card">
+              <Reveal key={category.slug} delay={index * 80} className="range-card card">
                 <h3>{category.name}</h3>
                 <ul className="range-card__list">
                   {category.products.map((product) => (
@@ -106,7 +109,7 @@ function About() {
       {/* ===== Address ===== */}
       <section className="section about-address">
         <div className="container">
-          <Reveal className="about-address__card">
+          <Reveal className="about-address__card card">
             <span className="about-address__icon" aria-hidden="true"><FiMapPin /></span>
             <div>
               <span className="eyebrow">Where We Are</span>
@@ -118,7 +121,7 @@ function About() {
                   </Fragment>
                 ))}
               </address>
-              <Link to="/contact" className="btn btn--primary">
+              <Link to="/contact" className="btn btn--orange">
                 Contact Us <FiArrowRight aria-hidden="true" />
               </Link>
             </div>

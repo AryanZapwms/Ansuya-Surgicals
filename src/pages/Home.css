@@ -17,22 +17,6 @@
   clip-path: polygon(0 0, 100% 2.8vw, 100% 100%, 0 calc(100% - 2.8vw));
 }
 
-.home-band__watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-heading);
-  font-size: clamp(110px, 16vw, 230px);
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.06);
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-}
-
 .home-band__inner {
   position: relative;
   display: flex;
@@ -330,49 +314,4 @@
   }
 }
 
-/* ---------- Call to action band ----------
-   Starts a shade deeper than the button orange so the white heading
-   keeps at least 3:1 contrast (WCAG AA for large text) */
-.home-cta {
-  padding: 56px 0;
-  background: linear-gradient(100deg, #d9730f 0%, #c8620d 38%, var(--blue) 100%);
-  color: #fff;
-}
-
-.home-cta__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  text-align: center;
-}
-
-.home-cta__title {
-  max-width: 560px;
-  color: #fff;
-  font-size: clamp(1.7rem, 3.4vw, 2.25rem);
-  font-weight: 800;
-}
-
-.home-cta__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
-}
-
-.home-cta__actions .btn {
-  box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.3);
-}
-
-@media (min-width: 1024px) {
-  .home-cta {
-    padding: 64px 0;
-  }
-
-  .home-cta__inner {
-    flex-direction: row;
-    text-align: left;
-  }
-}
+/* The call-to-action band uses .cta-band from components/CTASection.css */

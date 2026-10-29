@@ -3,21 +3,20 @@ import { FiChevronRight } from "react-icons/fi";
 import "./PageHero.css";
 
 /* =========================================================
-   PAGE HERO — banner at the top of inner pages
+   PAGE HERO — royal-blue banner at the top of inner pages,
+   with the faded ANSUYA lettering and a slanted bottom edge
+   (same look as the band on the home page)
    Props:
    - title:       big heading
    - subtitle:    optional short text
-   - image:       background image
    - breadcrumbs: [{ label: "Home", path: "/" }, { label: "About Us" }]
                   (the last item has no path = current page)
    ========================================================= */
 
-function PageHero({ title, subtitle, image, breadcrumbs = [] }) {
+function PageHero({ title, subtitle, breadcrumbs = [] }) {
   return (
     <section className="page-hero">
-      {image && <img className="page-hero__image" src={image} alt="" aria-hidden="true" />}
-      <div className="page-hero__overlay" />
-      <div className="page-hero__pattern" aria-hidden="true" />
+      <span className="band-watermark" aria-hidden="true">ANSUYA</span>
 
       <div className="container page-hero__content">
         <nav aria-label="Breadcrumb">

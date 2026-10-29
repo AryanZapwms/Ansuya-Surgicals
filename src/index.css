@@ -38,6 +38,7 @@
   --bg-soft: #f4f7fe;
   --bg-softer: var(--surface);
   --white: #ffffff;
+  --card-border: #eef2f7;
   --success: #12a36d;
 
   /* Typography */
@@ -144,12 +145,13 @@ h5 {
   padding: 0 20px;
 }
 
+/* One vertical rhythm for every page: 64px → 80px → 96px */
 .section {
-  padding: 72px 0;
+  padding: 64px 0;
 }
 
 .section--soft {
-  background: var(--bg-soft);
+  background: var(--surface);
 }
 
 @media (min-width: 768px) {
@@ -157,14 +159,49 @@ h5 {
     padding: 0 32px;
   }
   .section {
-    padding: 96px 0;
+    padding: 80px 0;
   }
 }
 
 @media (min-width: 1200px) {
   .section {
-    padding: 112px 0;
+    padding: 96px 0;
   }
+}
+
+/* White rounded card used across pages */
+.card {
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card--lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+}
+
+/* Big faded ANSUYA lettering behind the blue bands (page banners, home band) */
+.band-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: clamp(110px, 16vw, 230px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* ---------- Section heading ---------- */
@@ -181,12 +218,18 @@ h5 {
   margin-bottom: 14px;
 }
 
-.eyebrow::before {
+/* Blue bar + yellow dash, as in .accent-mark (mirrored after a centred label) */
+.eyebrow::before,
+.section-heading--center .eyebrow::after {
   content: "";
-  width: 28px;
-  height: 2px;
-  background: var(--primary);
-  border-radius: 2px;
+  width: 41px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--blue) 0 28px, transparent 28px 33px, var(--yellow) 33px);
+}
+
+.section-heading--center .eyebrow::after {
+  transform: scaleX(-1);
 }
 
 .section-heading {
@@ -198,14 +241,6 @@ h5 {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-}
-
-.section-heading--center .eyebrow::after {
-  content: "";
-  width: 28px;
-  height: 2px;
-  background: var(--primary);
-  border-radius: 2px;
 }
 
 .section-heading h2 {

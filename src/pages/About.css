@@ -16,37 +16,41 @@
   }
 }
 
+/* Photo in a soft framed card with a yellow square peeking out
+   at the top right, as in the home page collage */
 .about-main__media {
   position: relative;
-  padding: 0 0 36px 24px;
+  margin: 16px 16px 0 0;
 }
 
-/* Offset blue frame behind the image */
-.about-main__media::before {
-  content: "";
+.about-main__accent {
   position: absolute;
-  top: 24px;
-  left: 0;
-  right: 24px;
-  bottom: 12px;
-  border: 2px solid var(--primary-200);
-  border-radius: var(--radius-lg);
+  top: -16px;
+  right: -16px;
+  width: 112px;
+  height: 112px;
+  border-radius: var(--radius);
+  background: var(--yellow);
 }
 
 .about-main__frame {
   position: relative;
-  border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 4 / 5;
   max-height: 600px;
   width: 100%;
-  box-shadow: var(--shadow);
+  padding: 12px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
 }
 
 .about-main__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 12px;
 }
 
 .about-main__content h2 {
@@ -121,18 +125,16 @@
   }
 }
 
+/* White rounded card styles come from .card in index.css */
 .range-card {
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 28px 26px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
 }
 
 .range-card h3 {
+  color: var(--blue-dark);
   font-size: 1.15rem;
   margin-bottom: 14px;
   letter-spacing: 0;
@@ -174,11 +176,9 @@
   max-width: 760px;
   margin: 0 auto;
   padding: 36px 32px;
-  background: var(--primary-50);
-  border: 1px solid var(--primary-100);
-  border-radius: var(--radius-lg);
 }
 
+/* Icon tile as on the home page What We Do cards */
 .about-address__icon {
   display: grid;
   place-items: center;
@@ -186,8 +186,8 @@
   height: 54px;
   flex-shrink: 0;
   border-radius: 14px;
-  background: var(--primary);
-  color: #fff;
+  background: var(--tint);
+  color: var(--blue);
   font-size: 1.35rem;
 }
 

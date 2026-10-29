@@ -21,6 +21,7 @@ import collageCrepeBandage from "../assets/images/home/collage-crepe-bandage.web
 import collageSoftPadPacks from "../assets/images/home/collage-soft-pad-packs.webp";
 import collageGamjeeRoll from "../assets/images/home/collage-gamjee-roll.webp";
 import collageGauzeBandage from "../assets/images/home/collage-gauze-bandage.webp";
+import "../components/CTASection.css";
 import "./Home.css";
 
 /* How many products the home page shows before "View All Products" */
@@ -76,7 +77,7 @@ function Home() {
 
       {/* ===== DIAGONAL BLUE BAND ===== */}
       <section className="home-band">
-        <span className="home-band__watermark" aria-hidden="true">ANSUYA</span>
+        <span className="band-watermark" aria-hidden="true">ANSUYA</span>
         <div className="container home-band__inner">
           <Reveal className="home-band__text">
             <h2 className="home-band__title">Medical Surgicals</h2>
@@ -184,10 +185,10 @@ function Home() {
       </section>
 
       {/* ===== CALL TO ACTION — orange-to-blue band ===== */}
-      <section className="home-cta">
-        <div className="container home-cta__inner">
-          <h2 className="home-cta__title">Need bulk or institutional pricing?</h2>
-          <div className="home-cta__actions">
+      <section className="cta-band">
+        <div className="container cta-band__inner">
+          <h2 className="cta-band__title">Need bulk or institutional pricing?</h2>
+          <div className="cta-band__actions">
             <a
               href={getWhatsAppUrl("Hello, I would like to enquire about bulk / institutional pricing.")}
               className="btn btn--whatsapp"

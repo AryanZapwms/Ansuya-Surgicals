@@ -64,7 +64,7 @@ function Contact() {
                 delay={index * 80}
                 className={card.wide ? "contact-cards__wide" : ""}
               >
-                <div className="contact-card">
+                <div className="contact-card card card--lift">
                   <span className="contact-card__icon" aria-hidden="true">{card.icon}</span>
                   <h3>{card.title}</h3>
                   <p>{card.content}</p>
@@ -106,7 +106,7 @@ function Contact() {
 
             <a
               href={getWhatsAppUrl()}
-              className="btn contact-whatsapp"
+              className="btn btn--whatsapp contact-whatsapp"
               target="_blank"
               rel="noopener noreferrer"
             >

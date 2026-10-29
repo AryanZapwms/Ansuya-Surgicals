@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import {
-  FiArrowRight,
-  FiCheck,
-  FiChevronRight,
-} from "react-icons/fi";
+import { FiArrowRight, FiCheck } from "react-icons/fi";
+import PageHero from "../components/PageHero";
+import ProductCard from "../components/ProductCard";
 import SmartImage from "../components/SmartImage";
 import Reveal from "../components/Reveal";
 import CTASection from "../components/CTASection";
@@ -61,37 +59,16 @@ function ProductDetail() {
       <title>{`${product.name} | ${siteConfig.companyName}`}</title>
 
       {/* ===== HERO / BREADCRUMB ===== */}
-      <section className="page-hero product-detail-hero">
-        <div className="page-hero__overlay" />
-        <div className="page-hero__pattern" aria-hidden="true" />
-
-        <div className="container page-hero__content">
-          <nav aria-label="Breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb__item">
-                <Link to="/">Home</Link>
-                <FiChevronRight className="breadcrumb__sep" aria-hidden="true" />
-              </li>
-              <li className="breadcrumb__item">
-                <Link to="/products">Products</Link>
-                <FiChevronRight className="breadcrumb__sep" aria-hidden="true" />
-              </li>
-              {category && (
-                <li className="breadcrumb__item">
-                  <Link to={category.path}>{category.name}</Link>
-                  <FiChevronRight className="breadcrumb__sep" aria-hidden="true" />
-                </li>
-              )}
-              <li className="breadcrumb__item">
-                <span aria-current="page">{product.name}</span>
-              </li>
-            </ol>
-          </nav>
-
-          <h1 className="page-hero__title">{product.name}</h1>
-          {category && <p className="page-hero__subtitle">{category.shortDescription}</p>}
-        </div>
-      </section>
+      <PageHero
+        title={product.name}
+        subtitle={category?.shortDescription}
+        breadcrumbs={[
+          { label: "Home", path: "/" },
+          { label: "Products", path: "/products" },
+          ...(category ? [{ label: category.name, path: category.path }] : []),
+          { label: product.name },
+        ]}
+      />
 
       {/* ===== PRODUCT SHOWCASE ===== */}
       <section className="section product-detail">
@@ -124,7 +101,7 @@ function ProductDetail() {
           {/* ---- Info panel ---- */}
           <Reveal delay={120} className="product-detail__info">
             {brand && (
-              <span className="product-detail__brand" style={{ "--brand-color": brand.color }}>
+              <span className={`brand-chip brand-tone--${brand.slug} product-detail__brand`}>
                 {brand.name}
               </span>
             )}
@@ -169,13 +146,13 @@ function ProductDetail() {
             <div className="product-detail__actions">
               <a
                 href={getProductEnquiryUrl(product.name)}
-                className="product-detail__enquire"
+                className="btn btn--orange"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Enquire Now <FiArrowRight aria-hidden="true" />
               </a>
-              <a href={siteConfig.phoneLink} className="product-detail__call">
+              <a href={siteConfig.phoneLink} className="btn btn--outline">
                 Call Us
               </a>
             </div>
@@ -198,33 +175,7 @@ function ProductDetail() {
 
             <div className="product-grid">
               {relatedProducts.map((related) => (
-                <article key={related.id} className="product-card">
-                  <div className="product-card__media">
-                    <SmartImage
-                      src={related.image}
-                      hoverSrc={related.hoverImage}
-                      alt={related.name}
-                      className="product-card__image"
-                    />
-                  </div>
-                  <div className="product-card__body">
-                    <h3 className="product-card__title">{related.name}</h3>
-                    <p className="product-card__desc">{related.description}</p>
-                    <div className="product-card__actions">
-                      <Link to={`/products/${related.id}`} className="product-card__btn product-card__btn--ghost">
-                        Read More
-                      </Link>
-                      <a
-                        href={getProductEnquiryUrl(related.name)}
-                        className="product-card__btn"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Enquire Now <FiArrowRight aria-hidden="true" />
-                      </a>
-                    </div>
-                  </div>
-                </article>
+                <ProductCard key={related.id} product={related} />
               ))}
             </div>
           </div>
