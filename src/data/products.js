@@ -17,6 +17,11 @@
    - image:       imported product photo
    - hoverImage:  imported "cover" photo shown on hover (crossfade) —
                   undefined for the one product with no cover photo yet
+   - thumb / hoverThumb:
+                  ~300px-wide copies of image / hoverImage, kept in
+                  home-products/thumbs with the same file name. Product
+                  cards and carousels use them on smaller screens; if one
+                  is missing the full-size photo is used instead.
    - gallery:     optional array of extra imported photos shown as
                   additional thumbnails on the product detail page
    - description: short one or two line description
@@ -115,6 +120,13 @@ import surgeonGown6 from "../assets/images/home-products/Surgeon Gown6.webp";
 import plainPolyethyleneSheet3 from "../assets/images/home-products/Plain-POLYETHYLENE-sheet-Green-color-3.webp";
 import plainSheetPremium3 from "../assets/images/home-products/Plain-Sheet-Premium-blue-color-3.webp";
 
+// ~300px-wide copies for product cards and carousels (see "thumb" above)
+const thumbFiles = import.meta.glob("../assets/images/home-products/thumbs/*.webp", {
+  eager: true,
+  import: "default",
+});
+const thumb = (fileName) => thumbFiles[`../assets/images/home-products/thumbs/${fileName}`];
+
 const products = [
   // ---------------- ABSORBENT DRESSINGS (+ shared with Dressings) ----------------
   {
@@ -124,6 +136,8 @@ const products = [
     brand: "clinisafe",
     image: abdominalPads,
     hoverImage: abdominalPadsCover,
+    thumb: thumb("abdominal-paddes.webp"),
+    hoverThumb: thumb("abdominal-paddes-cover.webp"),
     gallery: [abdominalPads3, abdominalPads4],
     description:
       "Highly absorbent abdominal pad with X-ray detectable thread, used as a mopping pad in abdominal surgery. Sterilised by gamma radiation.",
@@ -147,6 +161,8 @@ const products = [
     brand: "clinisafe",
     image: combineDressing,
     hoverImage: combineDressingCover,
+    thumb: thumb("Combine-Dressing-600x600.webp"),
+    hoverThumb: thumb("Combine-Dressing-cover.webp"),
     gallery: [combineDressing3],
     description:
       "Post-operative dressing for moderate and heavily secreting wounds, with a non-adherent absorbent over wrap. Sterilised by gamma radiation.",
@@ -168,6 +184,8 @@ const products = [
     brand: "clinisafe",
     image: cottonGamjeePad,
     hoverImage: cottonGamjeePadCover,
+    thumb: thumb("cotton-Gamjee-pad-1-600x600.webp"),
+    hoverThumb: thumb("cotton-Gamjee-pad-cover.webp"),
     gallery: [cottonGamjeePad3, cottonGamjeePad4],
     description:
       "Absorbent cotton wool I.P. in gauze B.P., used as a sterile combine dressing pad and post-operative dressing.",
@@ -193,6 +211,8 @@ const products = [
     brand: "ansuya",
     image: gamjeeRoll,
     hoverImage: gamjeeRollCover,
+    thumb: thumb("Gamjee-Roll-2-600x600.webp"),
+    hoverThumb: thumb("Gamjee-Roll-cover.webp"),
     gallery: [gamjeeRoll3, gamjeeRoll4, gamjeeRoll5],
     description:
       "Highly absorbent cotton wool, used in hospitals for primary wound dressing and bandaging.",
@@ -212,6 +232,8 @@ const products = [
     brand: "clinisafe",
     image: gauzeSwabs,
     hoverImage: gauzeSwabsCover,
+    thumb: thumb("Gauze-Swabs-.webp"),
+    hoverThumb: thumb("Gauze-Swab-cover.webp"),
     gallery: [gauzeSwabs3, gauzeSwabs4, gauzeSwabs5],
     description:
       "Gauze swabs made from fine yarn bleached with hydrogen peroxide for high absorbency. Available with and without X-ray detectable thread.",
@@ -234,6 +256,8 @@ const products = [
     brand: "innova-fix",
     image: cannulaFixator,
     hoverImage: cannulaFixatorCover,
+    thumb: thumb("cannula-fixator.webp"),
+    hoverThumb: thumb("cannuala-fixatorcover.webp"),
     gallery: [cannulaFixator3, cannulaFixator4, cannulaFixator5],
     description:
       "Non-allergic adhesive cannula fixator with paper and a liner for easy removal.",
@@ -256,6 +280,8 @@ const products = [
     brand: "ansuya",
     image: cottonAdhesiveTape,
     hoverImage: cottonAdhesiveTapeCover,
+    thumb: thumb("cotton-adhesive-tape.webp"),
+    hoverThumb: thumb("cotton-adhesive-tape-cover.webp"),
     gallery: [cottonAdhesiveTape3],
     description:
       "Durable, breathable cloth tape that tears in any direction and leaves no sticky residue when removed. Often used to secure splints.",
@@ -277,6 +303,8 @@ const products = [
     brand: "innova-crepe",
     image: cottonCrepeBandage,
     hoverImage: cottonCrepeBandageCover,
+    thumb: thumb("cotton-crepe-bandage.webp"),
+    hoverThumb: thumb("cotton-crepe-bandage-cover.webp"),
     gallery: [cottonCrepeBandage3, cottonCrepeBandage4, cottonCrepeBandage5, cottonCrepeBandage6],
     description:
       "Thick-fabric cotton crepe bandage with better elasticity, giving controlled and uniform pressure while allowing normal skin breathing.",
@@ -297,6 +325,8 @@ const products = [
     brand: "innova-fix",
     image: elasticAdhesiveBandages,
     hoverImage: elasticAdhesiveBandagesCover,
+    thumb: thumb("elastic-adhesive-bandages.webp"),
+    hoverThumb: thumb("elastic-adhesive-bandages-cover.webp"),
     gallery: [elasticAdhesiveBandages3, elasticAdhesiveBandages4, elasticAdhesiveBandages5],
     description:
       "Elastic adhesive bandage with a porous, non-allergic adhesive that allows skin breathing, and a plastic liner for easy unrolling.",
@@ -320,6 +350,8 @@ const products = [
     brand: "elastogrip",
     image: elasticCrepeBandage,
     hoverImage: elasticCrepeBandageCover,
+    thumb: thumb("Elastic-crepe-bandage-1.webp"),
+    hoverThumb: thumb("Elastic-crepe-bandage-cover.webp"),
     gallery: [elasticCrepeBandage3],
     description:
       "Skin-friendly, soft and absorbent crepe bandage that provides firm compression and support.",
@@ -339,6 +371,8 @@ const products = [
     brand: "ansuya",
     image: microporousSurgicalTape,
     hoverImage: microporousSurgicalTapeCover,
+    thumb: thumb("microporous-surgical-tape.webp"),
+    hoverThumb: thumb("microporous-surgical-tape-cover.webp"),
     gallery: [microporousSurgicalTape3, microporousSurgicalTape4],
     description:
       "Surgical paper tape.",
@@ -357,6 +391,8 @@ const products = [
     brand: "ansuya",
     image: plasterOfParisBandage,
     hoverImage: plasterOfParisBandageCover,
+    thumb: thumb("Plaster-of-Paris-Bandage.webp"),
+    hoverThumb: thumb("Plaster-of-Paris-Bandage-cover.webp"),
     gallery: [plasterOfParisBandage3, plasterOfParisBandage4],
     description:
       "Plaster of Paris bandage with high cast strength, optimum setting time and minimum powder loss.",
@@ -378,6 +414,8 @@ const products = [
     brand: "ansuya",
     image: rolledBandages,
     hoverImage: rolledBandagesCover,
+    thumb: thumb("rolled-bandages.webp"),
+    hoverThumb: thumb("rolled-bandages-cover.webp"),
     gallery: [rolledBandages3, rolledBandages4, rolledBandages5],
     description:
       "Rolled bandage used to immobilise injured body parts, apply pressure, absorb drainage and secure dressings.",
@@ -400,6 +438,8 @@ const products = [
     brand: "soft-pad",
     image: castPadding,
     hoverImage: castPaddingCover,
+    thumb: thumb("Cast-Padding.webp"),
+    hoverThumb: thumb("Cast-Padding-cover.webp"),
     gallery: [castPadding3],
     description:
       "Cast padding made from natural cellulose fibres, used as a cushion between skin and plaster.",
@@ -421,6 +461,8 @@ const products = [
     brand: "bactisafe",
     image: chlorhexidineGauzeDressing,
     hoverImage: chlorhexidineGauzeDressingCover,
+    thumb: thumb("Chlorhexidine-Gauze-Dressing-B.P-.webp"),
+    hoverThumb: thumb("Chlorhexidine-Gauze-Dressing-B.P-cover.webp"),
     gallery: [chlorhexidineGauzeDressing3, chlorhexidineGauzeDressing4],
     description:
       "Gauze dressing coated with Chlorhexidine 0.5% w/w in white soft paraffin, used as a primary wound treatment for burns, skin grafts, ulcers and other injuries.",
@@ -440,6 +482,8 @@ const products = [
     brand: "clinisafe",
     image: eyePad,
     hoverImage: eyePadCover,
+    thumb: thumb("eye-pad.webp"),
+    hoverThumb: thumb("eye-pad-cover.webp"),
     gallery: [eyePad3, eyePad4, eyePad5],
     description:
       "Eye pad.",
@@ -453,6 +497,8 @@ const products = [
     brand: "clinisafe",
     image: paraffinGauzeDressing,
     hoverImage: paraffinGauzeDressingCover,
+    thumb: thumb("Paraffin-gauze-dressing-600x600.webp"),
+    hoverThumb: thumb("Paraffin-gauze-dressing-cover.webp"),
     gallery: [paraffinGauzeDressing3, paraffinGauzeDressing4],
     description:
       "Sterile gauze dressing impregnated with white soft paraffin, used as a primary wound treatment for burns, skin grafts, ulcers and other injuries.",
@@ -475,6 +521,8 @@ const products = [
     brand: "clinisafe",
     image: surgeonGown,
     hoverImage: surgeonGownCover,
+    thumb: thumb("surgeongown.webp"),
+    hoverThumb: thumb("surgeongown.cover.webp"),
     gallery: [surgeonGown3, surgeonGown4, surgeonGown5, surgeonGown6],
     description:
       "Available in ULTRA reinforcement, SMMS and non-woven types, along with hand towels.",
@@ -499,6 +547,8 @@ const products = [
     brand: "clinisafe",
     image: disposableHivKit,
     hoverImage: disposableHivKitCover,
+    thumb: thumb("Disposable-HIV-Protection-Kit.webp"),
+    hoverThumb: thumb("Disposable-HIV-Protection-Kit-cover.webp"),
     description:
       "Disposable kit containing a face mask, cap, gown, bed sheet, goggle, shoe covers, nitrile gloves and a disposal bag. Also available as a 3D HIV kit (3 kits).",
     sizes: [],
@@ -521,6 +571,8 @@ const products = [
     brand: "savior",
     image: plainPolyethyleneSheet,
     hoverImage: plainPolyethyleneSheetCover,
+    thumb: thumb("Plain-POLYETHYLENE-sheet-Green-color-600x600.webp"),
+    hoverThumb: thumb("Plain-POLYETHYLENE-sheet-Green-color-cover.webp"),
     gallery: [plainPolyethyleneSheet3],
     description:
       "Plain polyethylene sheet, also known as green sheet or bed sheet.",
@@ -539,6 +591,8 @@ const products = [
     brand: "savior",
     image: plainSheetPremium,
     hoverImage: plainSheetPremiumCover,
+    thumb: thumb("Plain-Sheet-Premium-blue-color-2-600x600.webp"),
+    hoverThumb: thumb("Plain-Sheet-Premium-blue-color-cover.webp"),
     gallery: [plainSheetPremium3],
     description:
       "Biodegradable plain sheet.",

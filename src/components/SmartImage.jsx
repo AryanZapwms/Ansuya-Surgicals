@@ -14,9 +14,22 @@ import "./SmartImage.css";
 
    Pass "width" and "height" (the photo's real size) so the
    browser can reserve its space before it loads.
+
+   Optional "srcSet" / "hoverSrcSet" and "sizes" let the browser
+   pick a smaller copy of the photo where it is sharp enough.
    ========================================================= */
 
-function SmartImage({ src, hoverSrc, alt, className = "", width, height }) {
+function SmartImage({
+  src,
+  srcSet,
+  hoverSrc,
+  hoverSrcSet,
+  sizes,
+  alt,
+  className = "",
+  width,
+  height,
+}) {
   const [failed, setFailed] = useState(false);
   const [hoverFailed, setHoverFailed] = useState(false);
   const [wantCover, setWantCover] = useState(false);
@@ -38,6 +51,8 @@ function SmartImage({ src, hoverSrc, alt, className = "", width, height }) {
       >
         <img
           src={src}
+          srcSet={srcSet}
+          sizes={sizes}
           alt={alt}
           className={`${className} smart-image-swap__base`}
           width={width}
@@ -48,6 +63,8 @@ function SmartImage({ src, hoverSrc, alt, className = "", width, height }) {
         {wantCover && (
           <img
             src={hoverSrc}
+            srcSet={hoverSrcSet}
+            sizes={sizes}
             alt=""
             aria-hidden="true"
             className={`${className} smart-image-swap__cover`}
@@ -64,6 +81,8 @@ function SmartImage({ src, hoverSrc, alt, className = "", width, height }) {
   return (
     <img
       src={src}
+      srcSet={srcSet}
+      sizes={sizes}
       alt={alt}
       className={className}
       width={width}

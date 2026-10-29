@@ -6,8 +6,17 @@ import { getProductEnquiryUrl } from "../config/siteConfig";
 import "./ProductCard.css";
 
 /* =========================================================
-   PRODUCT CARD — used on All Products, Category and Brand pages
+   PRODUCT CARD — used on the Home, Products and product pages
    ========================================================= */
+
+/* How wide the card photo is drawn in the product grid
+   (4 columns → 3 → 2 → 1, see ProductCard.css), so the browser
+   can choose the 300px copy or the full-size photo */
+const CARD_IMAGE_SIZES =
+  "(min-width: 1200px) 252px, (min-width: 900px) calc(33vw - 61px), (min-width: 560px) calc(50vw - 62px), calc(100vw - 64px)";
+
+/* "300px copy, full photo" — originals are 600px wide or more */
+const srcSetFor = (thumb, full) => (thumb ? `${thumb} 300w, ${full} 600w` : undefined);
 
 function ProductCard({ product }) {
   const category = categories.find((c) => product.category.includes(c.slug));
@@ -18,7 +27,10 @@ function ProductCard({ product }) {
         {/* Every product photo is square (600 × 600 or 1000 × 1000) */}
         <SmartImage
           src={product.image}
+          srcSet={srcSetFor(product.thumb, product.image)}
           hoverSrc={product.hoverImage}
+          hoverSrcSet={srcSetFor(product.hoverThumb, product.hoverImage)}
+          sizes={CARD_IMAGE_SIZES}
           alt={product.name}
           className="product-card__image"
           width={600}

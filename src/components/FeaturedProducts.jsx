@@ -17,6 +17,9 @@ import "./FeaturedProducts.css";
 /* How far the mouse must move before a press becomes a drag */
 const DRAG_START_PX = 6;
 
+/* Card photo width: card is min(76vw, 288px) wide with 20px padding each side */
+const CARD_IMAGE_SIZES = "(min-width: 379px) 248px, calc(76vw - 40px)";
+
 function FeaturedProducts({ title, products }) {
   const trackId = useId();
   const trackRef = useRef(null);
@@ -149,6 +152,8 @@ function FeaturedProducts({ title, products }) {
                 <span className="featured-card__media">
                   <img
                     src={product.image}
+                    srcSet={product.thumb && `${product.thumb} 300w, ${product.image} 600w`}
+                    sizes={CARD_IMAGE_SIZES}
                     alt=""
                     className="featured-card__image"
                     width={600}
