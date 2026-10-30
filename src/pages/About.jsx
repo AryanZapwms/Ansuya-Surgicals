@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiCamera, FiMapPin } from "react-icons/fi";
+import { FaBoxesStacked, FaIndustry } from "react-icons/fa6";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
@@ -66,6 +67,31 @@ const exhibitionPhotos = [
   { area: "d", sizes: TILE_SIZES, ...photo("expo-meeting", "Visitors looking at Ansuya products on a table", 800, 450) },
   { area: "e", sizes: TILE_SIZES, ...photo("expo-stall-team", "The Ansuya Surgicals team in front of their stall", 800, 600) },
   { area: "f", sizes: WIDE_ON_PHONE_SIZES, ...photo("expo-stall-seated", "Ansuya Surgicals team members seated at their stall", 800, 451) },
+];
+
+/* Factory photos are cropped to fit their tiles: the tall tiles show part of
+   a portrait photo and the small ones part of a 2:1 photo, so each is drawn
+   wider than its tile */
+const TALL_SIZES =
+  "(min-width: 1240px) 312px, (min-width: 992px) calc((100vw - 144px) / 3.55), (min-width: 560px) calc((100vw - 84px) / 1.78), calc(50vw - 25px)";
+const CROPPED_SIZES =
+  "(min-width: 1240px) 264px, (min-width: 992px) calc((100vw - 144px) / 4), (min-width: 560px) calc((100vw - 84px) / 2), calc(75vw - 37px)";
+const CROPPED_WIDE_ON_PHONE_SIZES =
+  "(min-width: 1240px) 264px, (min-width: 992px) calc((100vw - 144px) / 4), (min-width: 560px) calc((100vw - 84px) / 2), calc(100vw - 40px)";
+
+const factoryPhotos = [
+  { area: "a", sizes: TALL_SIZES, position: "35% center", ...photo("factory-packing-line", "A packaging machine wrapping Cotton Gamjee Roll packs", 800, 1066) },
+  { area: "b", sizes: CROPPED_SIZES, position: "70% center", ...photo("factory-roll", "A roll of white material feeding into a machine", 800, 400) },
+  { area: "c", sizes: CROPPED_SIZES, ...photo("factory-gauze-strips", "Strips of white gauze running through a machine", 800, 400) },
+  { area: "d", sizes: CROPPED_WIDE_ON_PHONE_SIZES, ...photo("factory-packing-machine", "Gloved hands placing dressings on a packing machine", 800, 400) },
+  { area: "e", sizes: TALL_SIZES, position: "30% center", ...photo("factory-pouch-line", "A worker at a machine running printed Bactisafe packaging film", 800, 1066) },
+];
+
+/* Manufacturing facts (from the About text and the home page) */
+const factoryFacts = [
+  { icon: FaIndustry, title: "Own facility", text: "Opened in 2010" },
+  { icon: FiMapPin, title: "Nalasopara, Vasai", text: "Maharashtra" },
+  { icon: FaBoxesStacked, title: "Bulk supply", text: "For hospitals and medical institutions" },
 ];
 
 /* Each category with the products that belong to it (from src/data) */
@@ -157,6 +183,47 @@ function About() {
             <p className="mosaic__caption">
               <FiCamera aria-hidden="true" /> Our team at trade exhibitions
             </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== Manufacturing + factory photos ===== */}
+      <section className="section section--soft about-factory">
+        <div className="container about-factory__grid">
+          <Reveal className="about-factory__content">
+            <span className="eyebrow">Manufacturing</span>
+            <h2 className="about-title">Made at our own facility</h2>
+            <p className="about-factory__lead">
+              Surgical dressings and bandages are made at our own facility in Nalasopara, Vasai
+              (Maharashtra), which opened in 2010.
+            </p>
+
+            <ul className="about-facts">
+              {factoryFacts.map(({ icon: Icon, title, text }) => (
+                <li key={title} className="about-fact card">
+                  <span className="about-fact__icon" aria-hidden="true">
+                    <Icon />
+                  </span>
+                  <span>
+                    <strong>{title}</strong>
+                    {text}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <Link to="/products" className="btn btn--orange">
+              View Products <FiArrowRight aria-hidden="true" />
+            </Link>
+          </Reveal>
+
+          <Reveal delay={150} className="about-factory__media">
+            <span className="about-factory__accent" aria-hidden="true" />
+            <div className="mosaic mosaic--factory">
+              {factoryPhotos.map((tile) => (
+                <MosaicTile key={tile.name} photo={tile} />
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>

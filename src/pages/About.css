@@ -89,6 +89,43 @@
   }
 }
 
+/* Factory photos: two tall ones either side of three small ones */
+.mosaic--factory {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "a e"
+    "b c"
+    "d d";
+}
+
+.mosaic--factory .mosaic__tile--a,
+.mosaic--factory .mosaic__tile--e {
+  aspect-ratio: 3 / 4;
+}
+
+.mosaic--factory .mosaic__tile--d {
+  aspect-ratio: 2 / 1;
+}
+
+@media (min-width: 560px) {
+  .mosaic--factory {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "a b e"
+      "a c e"
+      "a d e";
+  }
+
+  .mosaic--factory .mosaic__tile--a,
+  .mosaic--factory .mosaic__tile--e {
+    aspect-ratio: auto;
+  }
+
+  .mosaic--factory .mosaic__tile--d {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 /* ---------- Our story ---------- */
 .about-story__grid {
   display: grid;
@@ -238,6 +275,82 @@
   .about-brand:hover {
     transform: translateY(-2px);
   }
+}
+
+/* ---------- Manufacturing ---------- */
+.about-factory__grid {
+  display: grid;
+  gap: 56px;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .about-factory__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  /* Photos on the left, as on the old site */
+  .about-factory__media {
+    order: -1;
+  }
+}
+
+/* Blue square peeking out at the bottom left */
+.about-factory__media {
+  position: relative;
+  margin: 0 0 16px 16px;
+}
+
+.about-factory__accent {
+  position: absolute;
+  bottom: -16px;
+  left: -16px;
+  width: 112px;
+  height: 112px;
+  border-radius: var(--radius);
+  background: var(--blue);
+}
+
+.about-factory__lead {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.about-facts {
+  display: grid;
+  gap: 12px;
+  margin: 28px 0 32px;
+}
+
+.about-fact {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.about-fact strong {
+  display: block;
+  color: var(--blue-dark);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+/* Icon tile as on the home page What We Do cards */
+.about-fact__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--tint);
+  color: var(--blue);
+  font-size: 1.2rem;
 }
 
 /* ---------- What we make ---------- */
