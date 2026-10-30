@@ -28,3 +28,5 @@ design-reference/
 
 old-site-originals/
 old-site-images/
+# Original video files (13.5 MB); the compressed copy is in src/assets/videos/
+/Videos/
