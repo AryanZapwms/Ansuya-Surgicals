@@ -22,9 +22,17 @@
   }
 }
 
+/* The contact column is the widest, so the email address
+   never breaks onto two lines at 1024px */
 @media (min-width: 1024px) {
   .footer__grid {
-    grid-template-columns: 1fr 1.25fr 1.25fr 1.25fr;
+    grid-template-columns: 0.8fr 1.2fr 1.2fr 1.4fr;
+    gap: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer__grid {
     gap: 48px;
   }
 }
