@@ -353,66 +353,6 @@
   font-size: 1.2rem;
 }
 
-/* ---------- What we make ---------- */
-.about-range__grid {
-  display: grid;
-  gap: 22px;
-}
-
-@media (min-width: 640px) {
-  .about-range__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1100px) {
-  .about-range__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* White rounded card styles come from .card in index.css */
-.range-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 28px 26px;
-}
-
-.range-card h3 {
-  color: var(--blue-dark);
-  font-size: 1.15rem;
-  margin-bottom: 14px;
-  letter-spacing: 0;
-}
-
-.range-card__list {
-  display: grid;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.range-card__list a {
-  color: var(--text-muted);
-  font-size: 0.94rem;
-  transition: color var(--transition);
-}
-
-.range-card__list a:hover {
-  color: var(--primary);
-}
-
-.range-card__more {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: auto;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--primary);
-}
-
 /* ---------- Locations and reach ---------- */
 .about-reach__grid {
   display: grid;
@@ -594,4 +534,11 @@
   border-radius: 50%;
   background: var(--orange);
   box-shadow: 0 0 0 1px var(--orange);
+}
+
+/* ---------- What we make (product grid from ProductListing) ---------- */
+.about-range__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
 }

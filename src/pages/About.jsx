@@ -1,14 +1,14 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiCamera, FiMapPin } from "react-icons/fi";
 import { FaBoxesStacked, FaBuilding, FaIndustry } from "react-icons/fa6";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
+import ProductListing from "../components/ProductListing";
 import CTASection from "../components/CTASection";
 import siteConfig from "../config/siteConfig";
 import { allBrands } from "../data/brands";
-import categories from "../data/categories";
 import products from "../data/products";
 import indiaMap from "../assets/images/about/india-map.webp";
 import "./About.css";
@@ -119,11 +119,8 @@ const partnerRegions = [
 /* Corporate office and factory icons, in the order of siteConfig.addresses */
 const placeIcons = [FaBuilding, FaIndustry];
 
-/* Each category with the products that belong to it (from src/data) */
-const range = categories.map((category) => ({
-  ...category,
-  products: products.filter((product) => product.category.includes(category.slug)),
-}));
+/* How many products show before "View All Products", as on the home page */
+const ABOUT_PRODUCT_LIMIT = 8;
 
 /* A photo tile in one of the mosaics */
 function MosaicTile({ photo: tile }) {
@@ -144,6 +141,10 @@ function MosaicTile({ photo: tile }) {
 }
 
 function About() {
+  const [activeCategory, setActiveCategory] = useState("all");
+  const viewAllLink =
+    activeCategory === "all" ? "/products" : `/products?category=${activeCategory}`;
+
   return (
     <>
       <title>{`About Us | ${siteConfig.companyName}`}</title>
@@ -253,31 +254,6 @@ function About() {
         </div>
       </section>
 
-      {/* ===== What we make ===== */}
-      <section className="section section--soft about-range">
-        <div className="container">
-          <SectionHeading center eyebrow="What We Make" title="Our Product Range" />
-
-          <div className="about-range__grid">
-            {range.map((category, index) => (
-              <Reveal key={category.slug} delay={index * 80} className="range-card card">
-                <h3>{category.name}</h3>
-                <ul className="range-card__list">
-                  {category.products.map((product) => (
-                    <li key={product.id}>
-                      <Link to={`/products/${product.id}`}>{product.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-                <Link to={category.path} className="range-card__more">
-                  View products <FiArrowRight aria-hidden="true" />
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ===== Locations and reach + map ===== */}
       <section className="section about-reach">
         <div className="container about-reach__grid">
@@ -354,6 +330,27 @@ function About() {
               </figcaption>
             </figure>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ===== What we make — product photos with category tabs ===== */}
+      <section className="section section--soft about-range">
+        <div className="container">
+          <SectionHeading center eyebrow="What We Make" title="Our Product Range" />
+
+          <ProductListing
+            products={products}
+            showFilters
+            activeCategory={activeCategory}
+            onCategoryChange={setActiveCategory}
+            limit={ABOUT_PRODUCT_LIMIT}
+          />
+
+          <div className="about-range__more">
+            <Link to={viewAllLink} className="btn btn--orange">
+              View All Products <FiArrowRight aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
 
