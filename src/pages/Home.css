@@ -5,8 +5,12 @@
 
 /* ---------- Diagonal blue band ----------
    Slanted top and bottom edges; it overlaps the hero and the next
-   section by half the slant so the angles meet them */
+   section by half the slant so the angles meet them.
+   The background video (components/BandVideo) sits under a blue
+   tint: even over the video's whitest frames the white text keeps
+   at least 4.5:1 contrast. */
 .home-band {
+  --band-video-tint: rgba(18, 64, 160, 0.86);
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -15,6 +19,18 @@
   background: var(--blue);
   color: #fff;
   clip-path: polygon(0 0, 100% 2.8vw, 100% 100%, 0 calc(100% - 2.8vw));
+}
+
+/* Text on the left: tint strongest there, more video shows on the right */
+@media (min-width: 768px) {
+  .home-band {
+    --band-video-tint: linear-gradient(
+      90deg,
+      rgba(18, 64, 160, 0.9) 0%,
+      rgba(18, 64, 160, 0.84) 45%,
+      rgba(18, 64, 160, 0.7) 100%
+    );
+  }
 }
 
 .home-band__inner {
@@ -50,7 +66,12 @@
   transform: rotate(-1deg) translateY(-4px);
 }
 
+/* A little taller where the video plays, so more of it shows */
 @media (min-width: 768px) {
+  .home-band {
+    padding: 80px 0;
+  }
+
   .home-band__inner {
     flex-direction: row;
     text-align: left;
@@ -59,7 +80,7 @@
 
 @media (min-width: 1024px) {
   .home-band {
-    padding: 80px 0;
+    padding: 104px 0;
   }
 }
 

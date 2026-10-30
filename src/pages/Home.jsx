@@ -9,6 +9,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa6";
 import HeroCarousel from "../components/HeroCarousel";
+import BandVideo from "../components/BandVideo";
 import FeaturedProducts from "../components/FeaturedProducts";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
@@ -19,6 +20,10 @@ import products from "../data/products";
 import { allBrands } from "../data/brands";
 import woundCareCollage from "../assets/images/home/wound-care-collage-1600.webp";
 import woundCareCollageSmall from "../assets/images/home/wound-care-collage-800.webp";
+// Band video: 31 s, 1280x540, H.264, no sound (the pill-bottle scenes are cut out)
+import bandVideo from "../assets/videos/home-band.mp4";
+import bandPosterSmall from "../assets/images/home/home-band-poster-640.webp";
+import bandPosterLarge from "../assets/images/home/home-band-poster-1280.webp";
 import "../components/CTASection.css";
 import "./Home.css";
 
@@ -70,8 +75,9 @@ function Home() {
       {/* ===== HERO CAROUSEL ===== */}
       <HeroCarousel />
 
-      {/* ===== DIAGONAL BLUE BAND ===== */}
+      {/* ===== DIAGONAL BLUE BAND — background video under a blue tint ===== */}
       <section className="home-band">
+        <BandVideo video={bandVideo} posterSmall={bandPosterSmall} posterLarge={bandPosterLarge} />
         <span className="band-watermark" aria-hidden="true">ANSUYA</span>
         <div className="container home-band__inner">
           <Reveal className="home-band__text">
