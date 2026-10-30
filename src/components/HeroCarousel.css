@@ -48,38 +48,6 @@
   user-select: none;
 }
 
-/* Slide 3 — plain brand blue with a dotted pattern */
-.hero__slide--brand {
-  background:
-    radial-gradient(circle at 78% 38%, rgba(47, 95, 208, 0.85) 0%, rgba(47, 95, 208, 0) 42%),
-    radial-gradient(circle at 92% 90%, rgba(247, 147, 30, 0.35) 0%, rgba(247, 147, 30, 0) 30%),
-    linear-gradient(120deg, var(--blue-dark) 0%, var(--blue) 100%);
-}
-
-.hero__slide--brand::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 60%;
-  opacity: 0.22;
-  background: radial-gradient(circle, #fff 1.5px, transparent 1.6px) 0 0 / 24px 24px;
-  -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 100%);
-  mask-image: linear-gradient(to left, #000 0%, transparent 100%);
-}
-
-.hero__slide--brand::after {
-  content: "";
-  position: absolute;
-  top: 14%;
-  right: 8%;
-  width: min(340px, 40vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 216, 0, 0.45);
-}
-
 /* ---------- Text card ---------- */
 .hero__content {
   position: relative;

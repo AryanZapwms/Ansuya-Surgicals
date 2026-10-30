@@ -12,6 +12,7 @@ import siteConfig from "../config/siteConfig";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 import productRange from "../assets/images/home/hero-product-range.webp";
 import cottonGauze from "../assets/images/home/hero-cotton-gauze.webp";
+import packingLine from "../assets/images/home/hero-packing-line.webp";
 import "./HeroCarousel.css";
 
 /* =========================================================
@@ -29,7 +30,6 @@ import "./HeroCarousel.css";
 const AUTOPLAY_MS = 5000;
 const SWIPE_PX = 50;
 
-/* A slide with no image is the plain brand-blue slide */
 const slides = [
   {
     image: productRange,
@@ -38,7 +38,12 @@ const slides = [
     alt: "Ansuya, Clinisafe, Innova, Soft Pad and Elastogrip products on a table",
   },
   { image: cottonGauze, width: 1200, height: 500, alt: "Folded white cotton gauze" },
-  { image: null },
+  {
+    image: packingLine,
+    width: 956,
+    height: 700,
+    alt: "A packaging machine wrapping Cotton Gamjee Roll packs",
+  },
 ];
 
 function HeroCarousel() {
@@ -126,15 +131,13 @@ function HeroCarousel() {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`hero__slide ${slide.image ? "" : "hero__slide--brand"} ${
-              index === active ? "is-active" : ""
-            }`}
+            className={`hero__slide ${index === active ? "is-active" : ""}`}
             role="group"
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${slides.length}`}
             aria-hidden={index !== active}
           >
-            {slide.image && (index === 0 || pageLoaded) && (
+            {(index === 0 || pageLoaded) && (
               <img
                 src={slide.image}
                 alt={slide.alt}
