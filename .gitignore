@@ -25,3 +25,6 @@ dist-ssr
 
 # Design reference files (local only)
 design-reference/
+
+old-site-originals/
+old-site-images/
