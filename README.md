@@ -43,7 +43,6 @@ src/
     products.js        The product catalogue
     categories.js      The 5 product categories (filter tabs)
     brands.js          Brand names and colours
-    images.js          Local images used outside the product catalogue
   components/          Header, Footer, ProductCard, ProductListing, PageHero, ...
   pages/               Home, Products, ProductDetail, About, Contact, NotFound
   assets/images/       Logo, product photos, brand logos, certificates

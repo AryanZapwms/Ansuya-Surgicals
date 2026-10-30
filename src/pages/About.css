@@ -2,28 +2,120 @@
    ABOUT PAGE
    ========================================================= */
 
-/* ---------- Main about ---------- */
-.about-main__grid {
-  display: grid;
-  gap: 64px;
-  align-items: center;
+.about-title {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin-bottom: 20px;
 }
 
-@media (min-width: 992px) {
-  .about-main__grid {
-    grid-template-columns: 1fr 1.05fr;
-    gap: 80px;
+/* ---------- Photo mosaics ----------
+   Each tile is placed by its area letter (set in About.jsx) */
+.mosaic {
+  display: grid;
+  gap: 10px;
+}
+
+.mosaic__tile--a { grid-area: a; }
+.mosaic__tile--b { grid-area: b; }
+.mosaic__tile--c { grid-area: c; }
+.mosaic__tile--d { grid-area: d; }
+.mosaic__tile--e { grid-area: e; }
+.mosaic__tile--f { grid-area: f; }
+
+.mosaic__tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--tint);
+  box-shadow: var(--shadow-sm);
+  aspect-ratio: 4 / 3;
+}
+
+.mosaic__tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mosaic__tile:hover img {
+    transform: scale(1.05);
   }
 }
 
-/* Photo in a soft framed card with a yellow square peeking out
-   at the top right, as in the home page collage */
-.about-main__media {
+.mosaic__caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.mosaic__caption svg {
+  color: var(--blue);
+}
+
+/* Exhibition photos: one big tile and five small ones */
+.mosaic--expo {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "a a"
+    "b c"
+    "d e"
+    "f f";
+}
+
+.mosaic--expo .mosaic__tile--a,
+.mosaic--expo .mosaic__tile--f {
+  aspect-ratio: 16 / 10;
+}
+
+@media (min-width: 560px) {
+  .mosaic--expo {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "a a b"
+      "a a c"
+      "d e f";
+  }
+
+  .mosaic--expo .mosaic__tile--a {
+    aspect-ratio: auto;
+  }
+
+  .mosaic--expo .mosaic__tile--f {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ---------- Our story ---------- */
+.about-story__grid {
+  display: grid;
+  gap: 56px;
+}
+
+@media (min-width: 992px) {
+  .about-story__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* The photos stay in view while the story scrolls past */
+  .about-story__media {
+    position: sticky;
+    top: calc(var(--header-height) + 32px);
+  }
+}
+
+/* Yellow square peeking out at the top right, as on the home page */
+.about-story__media {
   position: relative;
   margin: 16px 16px 0 0;
 }
 
-.about-main__accent {
+.about-story__accent {
   position: absolute;
   top: -16px;
   right: -16px;
@@ -33,78 +125,119 @@
   background: var(--yellow);
 }
 
-.about-main__frame {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  max-height: 600px;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow-lg);
-}
-
-.about-main__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.about-main__content h2 {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
-  margin-bottom: 20px;
-}
-
-.about-main__lead {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--navy);
-  margin-bottom: 16px;
-}
-
-.about-main__content > p:not(.about-main__lead) {
-  color: var(--text-muted);
-  margin-bottom: 14px;
-}
-
-.about-main__points {
+/* Numbered milestones joined by a line */
+.about-steps {
   display: grid;
-  gap: 12px;
-  margin: 26px 0 34px;
+  gap: 28px;
+  margin: 8px 0 32px;
+  list-style: none;
 }
 
-@media (min-width: 560px) {
-  .about-main__points {
-    grid-template-columns: 1fr 1fr;
-  }
+.about-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 18px;
 }
 
-.about-main__points li {
+.about-step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 60px;
+  bottom: -22px;
+  left: 25px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(var(--blue), var(--tint));
+}
+
+.about-step__number {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 0 0 5px var(--tint);
+}
+
+.about-step__title {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
-  align-items: flex-start;
-  font-size: 0.94rem;
-  font-weight: 500;
+  margin: 4px 0 6px;
+  color: var(--blue-dark);
+  font-size: 1.15rem;
+  letter-spacing: 0;
+}
+
+.about-step__year {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--yellow);
+  color: var(--blue-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.about-step p {
+  color: var(--text-muted);
+}
+
+.about-step strong {
+  color: var(--blue-dark);
+}
+
+.about-story__supply {
+  padding: 18px 20px;
+  border-left: 4px solid var(--orange);
+  border-radius: 0 12px 12px 0;
+  background: var(--surface);
   color: var(--navy);
+  font-weight: 500;
 }
 
-.about-main__points svg {
-  flex-shrink: 0;
-  margin-top: 4px;
-  color: var(--primary);
-}
-
-.about-main__subtitle {
-  margin-top: 26px;
+.about-story__subtitle {
+  margin: 28px 0 14px;
   font-size: 1.1rem;
   letter-spacing: 0;
 }
 
-.about-main__subtitle + .about-main__points {
-  margin-top: 14px;
+/* Brand names as pastel pills (colours from index.css) */
+.about-story__brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.about-brand {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--tone-bg);
+  color: var(--tone-ink);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition:
+    background var(--transition),
+    transform var(--transition);
+}
+
+.about-brand:hover {
+  background: var(--tone-bg-hover);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-brand:hover {
+    transform: translateY(-2px);
+  }
 }
 
 /* ---------- What we make ---------- */
