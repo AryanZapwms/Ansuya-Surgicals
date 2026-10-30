@@ -10,8 +10,8 @@ import {
 } from "react-icons/fi";
 import siteConfig from "../config/siteConfig";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
-import gauzeSwabPacks from "../assets/images/home/hero-gauze-swab-packs.webp";
-import cottonEyePads from "../assets/images/home/hero-cotton-eye-pads.webp";
+import productRange from "../assets/images/home/hero-product-range.webp";
+import cottonGauze from "../assets/images/home/hero-cotton-gauze.webp";
 import "./HeroCarousel.css";
 
 /* =========================================================
@@ -31,8 +31,13 @@ const SWIPE_PX = 50;
 
 /* A slide with no image is the plain brand-blue slide */
 const slides = [
-  { image: gauzeSwabPacks, alt: "Clinisafe gauze swab packs" },
-  { image: cottonEyePads, alt: "Cotton eye pads beside raw cotton" },
+  {
+    image: productRange,
+    width: 1200,
+    height: 500,
+    alt: "Ansuya, Clinisafe, Innova, Soft Pad and Elastogrip products on a table",
+  },
+  { image: cottonGauze, width: 1200, height: 500, alt: "Folded white cotton gauze" },
   { image: null },
 ];
 
@@ -134,8 +139,8 @@ function HeroCarousel() {
                 src={slide.image}
                 alt={slide.alt}
                 className="hero__image"
-                width={1000}
-                height={1000}
+                width={slide.width}
+                height={slide.height}
                 fetchPriority={index === 0 ? "high" : "low"}
                 draggable={false}
               />

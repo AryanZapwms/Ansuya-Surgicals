@@ -17,10 +17,8 @@ import BackToTop from "../components/BackToTop";
 import siteConfig, { getWhatsAppUrl } from "../config/siteConfig";
 import products from "../data/products";
 import { allBrands } from "../data/brands";
-import collageCrepeBandage from "../assets/images/home/collage-crepe-bandage.webp";
-import collageSoftPadPacks from "../assets/images/home/collage-soft-pad-packs.webp";
-import collageGamjeeRoll from "../assets/images/home/collage-gamjee-roll.webp";
-import collageGauzeBandage from "../assets/images/home/collage-gauze-bandage.webp";
+import woundCareCollage from "../assets/images/home/wound-care-collage-1600.webp";
+import woundCareCollageSmall from "../assets/images/home/wound-care-collage-800.webp";
 import "../components/CTASection.css";
 import "./Home.css";
 
@@ -55,13 +53,10 @@ const services = [
   },
 ];
 
-/* Photo collage next to "Surgical dressings, made in India" (all 720 × 720) */
-const collagePhotos = [
-  { src: collageCrepeBandage, alt: "Crepe bandage being wrapped around a hand" },
-  { src: collageSoftPadPacks, alt: "Soft Pad cast padding packs and rolls" },
-  { src: collageGamjeeRoll, alt: "Cotton gamjee roll" },
-  { src: collageGauzeBandage, alt: "Rolled gauze bandage on a hand" },
-];
+/* The client's 9-photo wound-care collage next to "Surgical dressings, made in India"
+   (one square image in two sizes; the frame is at most 600px wide) */
+const COLLAGE_SRCSET = `${woundCareCollageSmall} 800w, ${woundCareCollage} 1600w`;
+const COLLAGE_SIZES = "(min-width: 700px) 576px, calc(100vw - 80px)";
 
 function Home() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -122,12 +117,16 @@ function Home() {
         <div className="container home-photos__grid">
           <Reveal className="home-photos__collage">
             <span className="home-photos__accent" aria-hidden="true" />
-            <div className="home-photos__tiles">
-              {collagePhotos.map((photo) => (
-                <div key={photo.src} className="home-photos__tile">
-                  <img src={photo.src} alt={photo.alt} width={720} height={720} loading="lazy" />
-                </div>
-              ))}
+            <div className="home-photos__frame">
+              <img
+                src={woundCareCollage}
+                srcSet={COLLAGE_SRCSET}
+                sizes={COLLAGE_SIZES}
+                alt="Nine photos of bandages and wound dressings being applied"
+                width={1600}
+                height={1600}
+                loading="lazy"
+              />
             </div>
           </Reveal>
 

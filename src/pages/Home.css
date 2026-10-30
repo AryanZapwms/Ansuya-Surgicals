@@ -103,8 +103,10 @@
 
 .home-photos__collage {
   position: relative;
+  width: calc(100% - 16px);
+  max-width: 600px;
   /* room for the yellow square peeking out at the top right */
-  margin: 16px 16px 0 0;
+  margin-top: 16px;
 }
 
 .home-photos__accent {
@@ -117,55 +119,20 @@
   background: var(--yellow);
 }
 
-.home-photos__tiles {
+/* The 9-photo collage in a soft framed card */
+.home-photos__frame {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
   padding: 12px;
-  border: 1px solid #eef2f7;
+  border: 1px solid var(--card-border);
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow-lg);
 }
 
-.home-photos__tile {
-  height: 180px;
-  overflow: hidden;
-  border-radius: 12px;
-  background: var(--bg-soft);
-}
-
-/* Bottom row slightly shorter, as in the reference */
-.home-photos__tile:nth-child(n + 3) {
-  height: 150px;
-}
-
-.home-photos__tile img {
+.home-photos__frame img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-@media (min-width: 640px) {
-  .home-photos__tile {
-    height: 256px;
-  }
-
-  .home-photos__tile:nth-child(n + 3) {
-    height: 208px;
-  }
-
-  .home-photos__tiles {
-    gap: 16px;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .home-photos__tile:hover img {
-    transform: scale(1.05);
-  }
+  height: auto;
+  border-radius: 12px;
 }
 
 .home-photos__title {
