@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiCamera, FiMapPin } from "react-icons/fi";
-import { FaBoxesStacked, FaIndustry } from "react-icons/fa6";
+import { FaBoxesStacked, FaBuilding, FaIndustry } from "react-icons/fa6";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
@@ -10,6 +10,7 @@ import siteConfig from "../config/siteConfig";
 import { allBrands } from "../data/brands";
 import categories from "../data/categories";
 import products from "../data/products";
+import indiaMap from "../assets/images/about/india-map.webp";
 import "./About.css";
 
 /* The client's own photos, each in a 400px and an 800px copy
@@ -93,6 +94,30 @@ const factoryFacts = [
   { icon: FiMapPin, title: "Nalasopara, Vasai", text: "Maharashtra" },
   { icon: FaBoxesStacked, title: "Bulk supply", text: "For hospitals and medical institutions" },
 ];
+
+/* Where the regional representatives and channel partners are (from the old
+   About page). The map image (india-map.webp) has these shaded blue, so it
+   needs redrawing if this list changes. */
+const partnerRegions = [
+  "Maharashtra",
+  "Andhra Pradesh",
+  "Telangana",
+  "Karnataka",
+  "Delhi",
+  "Punjab",
+  "Uttar Pradesh",
+  "Madhya Pradesh",
+  "Rajasthan",
+  "Kerala",
+  "Tamil Nadu",
+  "Gujarat",
+  "West Bengal",
+  "Goa",
+  "Chhattisgarh",
+];
+
+/* Corporate office and factory icons, in the order of siteConfig.addresses */
+const placeIcons = [FaBuilding, FaIndustry];
 
 /* Each category with the products that belong to it (from src/data) */
 const range = categories.map((category) => ({
@@ -253,25 +278,81 @@ function About() {
         </div>
       </section>
 
-      {/* ===== Address ===== */}
-      <section className="section about-address">
-        <div className="container">
-          <Reveal className="about-address__card card">
-            <span className="about-address__icon" aria-hidden="true"><FiMapPin /></span>
-            <div>
-              <span className="eyebrow">Where We Are</span>
-              <address className="about-address__lines">
-                {siteConfig.addressLines.map((line, index) => (
-                  <Fragment key={line}>
-                    {index > 0 && <br />}
-                    {line}
-                  </Fragment>
-                ))}
-              </address>
-              <Link to="/contact" className="btn btn--orange">
-                Contact Us <FiArrowRight aria-hidden="true" />
-              </Link>
+      {/* ===== Locations and reach + map ===== */}
+      <section className="section about-reach">
+        <div className="container about-reach__grid">
+          <Reveal className="about-reach__content">
+            <span className="eyebrow">Where We Are</span>
+            <h2 className="about-title">Locations and Reach</h2>
+            <p className="about-reach__lead">
+              Our corporate office is in Mumbai and our manufacturing facility is in Nalasopara,
+              Vasai (Maharashtra). A network of regional representatives and channel partners
+              serves customers across India.
+            </p>
+
+            <div className="about-places">
+              {siteConfig.addresses.map(({ label, lines }, index) => {
+                const Icon = placeIcons[index] ?? FiMapPin;
+                return (
+                  <div key={label} className="about-place card">
+                    <span className="about-place__icon" aria-hidden="true">
+                      <Icon />
+                    </span>
+                    <div>
+                      <h3 className="about-place__label">{label}</h3>
+                      <address className="about-place__lines">
+                        {lines.map((line, lineIndex) => (
+                          <Fragment key={line}>
+                            {lineIndex > 0 && <br />}
+                            {line}
+                          </Fragment>
+                        ))}
+                      </address>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
+
+            <h3 className="about-reach__subtitle">Representatives and channel partners in</h3>
+            <ul className="about-regions">
+              {partnerRegions.map((region) => (
+                <li key={region}>{region}</li>
+              ))}
+            </ul>
+
+            <Link to="/contact" className="btn btn--orange">
+              Contact Us <FiArrowRight aria-hidden="true" />
+            </Link>
+          </Reveal>
+
+          <Reveal delay={150} className="about-reach__media">
+            <figure className="india-map">
+              <div className="india-map__frame">
+                <div className="india-map__image">
+                  <img
+                    src={indiaMap}
+                    alt="Map of India with the states listed here shaded blue"
+                    width={810}
+                    height={926}
+                    loading="lazy"
+                  />
+                  {/* Corporate office (Mumbai) and factory (Nalasopara), as a
+                      percentage of the map image */}
+                  <span className="india-map__pin" style={{ left: "17.3%", top: "59.6%" }} />
+                </div>
+              </div>
+              <figcaption className="india-map__legend">
+                <span>
+                  <span className="india-map__swatch" aria-hidden="true" /> Representatives and
+                  channel partners
+                </span>
+                <span>
+                  <span className="india-map__swatch india-map__swatch--pin" aria-hidden="true" />{" "}
+                  Corporate office and factory
+                </span>
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
       </section>
